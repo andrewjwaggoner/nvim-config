@@ -15,7 +15,7 @@
 ## Updating your lolcat/figler header
 
 
-echo 'Neovim' | figlet -f "/<folder>/3d.flf" -c | lolcat > ~/.config/nvim/static/neovim.cat
+echo 'Neovim' | figlet -f "3d.flf" -c | lolcat > ~/.config/nvim/static/neovim.cat
 
 ## What is this
 
