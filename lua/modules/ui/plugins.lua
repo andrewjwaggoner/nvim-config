@@ -1,9 +1,14 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.ui.config')
+local api = vim.api
+
+-- Surround
+plugin {'tpope/vim-surround'}
 
 -- Color scheme
 plugin {'glepnir/zephyr-nvim', config = conf.zephyr}
 
+-- Dashboard
 plugin {'glepnir/dashboard-nvim',config = conf.dashboard}
 
 -- status line plugin.
