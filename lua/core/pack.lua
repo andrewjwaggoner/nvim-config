@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local fn,uv,api = vim.fn,vim.loop,vim.api
 local vim_path = vim.fn.stdpath('config')
 local data_dir = string.format('%s/site/',vim.fn.stdpath('data'))
@@ -56,7 +52,7 @@ function Packer:init_ensure_plugins()
     local cmd = "!git clone https://github.com/wbthomason/packer.nvim " ..packer_dir
     api.nvim_command(cmd)
     uv.fs_mkdir(data_dir..'lua',511,function()
-      assert("make compile path dir faield")
+      assert("Failed making compile directory for packer.")
     end)
     self:load_packer()
     packer.sync()
@@ -118,12 +114,6 @@ function plugins.load_compile()
       require('core.pack')[func]()
     end, {})
   end
-  -- vim.cmd [[command! PackerCompile lua require('core.pack').compile_notify()]]
-  -- vim.cmd [[command! PackerInstall lua require('core.pack').install()]]
-  -- vim.cmd [[command! PackerUpdate lua require('core.pack').update()]]
-  -- vim.cmd [[command! PackerSync lua require('core.pack').sync()]]
-  -- vim.cmd [[command! PackerClean lua require('core.pack').clean()]]
-  -- vim.cmd [[command! PackerStatus  lua require('packer').status()]]
 end
 
 return plugins
