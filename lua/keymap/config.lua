@@ -27,6 +27,8 @@ nmap {
   {'td',":bd!<CR>", opts(noremap)},
   {"J", "10j", opts(noremap)},
   {"K", "10k", opts(noremap)},
+  {"H", "^", opts(noremap)},
+  {"L", "$", opts(noremap)},
 }
 
 -- insert mode
