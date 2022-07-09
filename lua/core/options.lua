@@ -47,7 +47,7 @@ vim.opt.startofline    = false;
 vim.opt.whichwrap      = "h,l,<,>,[,],~";
 vim.opt.splitbelow     = true;
 vim.opt.splitright     = true;
-vim.opt.switchbuf      = "useopen";
+vim.opt.switchbuf      = "useopen"; 
 vim.opt.backspace      = "indent,eol,start";
 vim.opt.diffopt        = "filler,iwhite,internal,algorithm:patience";
 vim.opt.completeopt    = "menu,menuone,noselect";
@@ -66,6 +66,8 @@ vim.opt.pumheight      = 15;
 vim.opt.helpheight     = 12;
 vim.opt.previewheight  = 12;
 vim.opt.showcmd        = false;
+vim.opt.relativenumber = true;
+vim.opt.number         = true;
 -- just for nightly
 vim.opt.cmdheight      = 2;
 vim.opt.cmdwinheight   = 5;

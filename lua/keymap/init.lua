@@ -1,16 +1,12 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
--- recommend plugins key defines in this file
+-- Put plugins key definitionas in this file
 
 require('keymap.config')
 local key = require('core.keymap')
 local nmap = key.nmap
-local silent,noremap =key.silent,key.noremap
+local silent,noremap = key.silent,key.noremap
 local opts = key.new_opts
 local cmd = key.cmd
 
--- usage of plugins
 nmap {
   -- packer
   {'<Leader>pu',cmd('PackerUpdate'),opts(noremap,silent)},

@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local config = {}
 
 function config.zephyr()
@@ -17,8 +13,8 @@ function config.dashboard()
   local db = require('dashboard')
   db.session_directory = home .. '/.cache/nvim/session'
   db.preview_command = 'cat | lolcat -F 0.3'
-  db.preview_file_path = home .. '/.config/nvim/static/neovim.cat'
-  db.preview_file_height = 12
+  db.preview_file_path = home .. '/.config/nvim/static/hello_andrew.cat'
+  db.preview_file_height = 18
   db.preview_file_width = 80
   db.custom_center = {
       {icon = '  ',
@@ -26,7 +22,7 @@ function config.dashboard()
       shortcut = 'SPC p u',
       action ='PackerUpdate'},
       {icon = '  ',
-      desc = 'Find  File                              ',
+      desc = 'Find File                               ',
       action = 'Telescope find_files find_command=rg,--hidden,--files',
       shortcut = 'SPC f f'},
     }

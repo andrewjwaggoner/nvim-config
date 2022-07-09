@@ -1,10 +1,6 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local config ={}
 
--- config server in this function
+-- Config server in this function
 function config.nvim_lsp()
 end
 
