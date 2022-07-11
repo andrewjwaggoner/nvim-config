@@ -5,7 +5,7 @@ local conf = require('modules.completion.config')
 plugin {'neovim/nvim-lspconfig',
  -- use filetype to lazyload lsp
  -- config your language filetype here
-  ft = { 'lua','rust','c','cpp'},
+  ft = { 'lua','rust','c','cpp', 'py', 'clj', 'js', 'css','html', 'cs'},
   config = conf.nvim_lsp,
 }
 

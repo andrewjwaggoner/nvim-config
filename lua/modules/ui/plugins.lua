@@ -1,9 +1,14 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.ui.config')
-local api = vim.api
 
 -- Surround
 plugin {'tpope/vim-surround'}
+
+-- Git wrapper
+plugin {'tpope/vim-fugitive'}
+
+-- Reveal git information quickly
+plugin {'rhysd/git-messenger.vim'}
 
 -- Color scheme
 plugin {'glepnir/zephyr-nvim', config = conf.zephyr}
