@@ -2,6 +2,7 @@ local plugin = require('core.pack').register_plugin
 local conf = require('modules.completion.config')
 
 -- Language Server Parser
+-- NOTE: You must install the language servers yourself. See :help lspconfig-all
 plugin {'neovim/nvim-lspconfig',
  -- use filetype to lazyload lsp
  -- config your language filetype here
@@ -17,7 +18,7 @@ plugin {'hrsh7th/nvim-cmp',
     {'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
     {'hrsh7th/cmp-path' , after = 'nvim-cmp'},
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-    {'saadparwaiz1/cmp_luasnip', after = "LuaSnip" },
+--    {'saadparwaiz1/cmp_luasnip', after = "LuaSnip" },
   },
 }
 

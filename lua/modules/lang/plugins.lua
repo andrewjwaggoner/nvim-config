@@ -10,3 +10,4 @@ plugin {'nvim-treesitter/nvim-treesitter',
 }
 
 plugin {'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter'}
+
