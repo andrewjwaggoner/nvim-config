@@ -35,3 +35,14 @@ plugin {'akinsho/nvim-bufferline.lua',
    config = conf.nvim_bufferline,
    requires = 'kyazdani42/nvim-web-devicons'
 }
+
+-- Color picker
+plugin {'max397574/colortils.nvim',
+  cmd = "Colortils",
+  config = conf.colortils
+}
+
+-- Colorizer for color codes
+plugin {'norcalli/nvim-colorizer.lua',
+  config = conf.nvim_colorizer
+}

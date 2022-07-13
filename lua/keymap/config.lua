@@ -30,6 +30,7 @@ nmap {
   {"L", "$", opts(noremap)},
   {"<Leader>t", ":NvimTreeToggle<CR>", opts(noremap)},
   {"<Leader>gm", ":GitMessenger<CR>", opts(noremap)},
+  {"<Leader>cp", ":Colortils picker<CR>", opts(noremap)},
 }
 
 -- insert mode

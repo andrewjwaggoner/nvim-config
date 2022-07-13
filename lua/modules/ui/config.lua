@@ -39,11 +39,19 @@ function config.nvim_bufferline()
 end
 
 function config.nvim_tree()
-	require("nvim-tree").setup({
+	require('nvim-tree').setup({
 		disable_netrw = false,
 		hijack_cursor = true,
 		hijack_netrw = true,
   })
+end
+
+function config.colortils()
+  require('colortils').setup({})
+end
+
+function config.nvim_colorizer()
+  require('colorizer').setup({})
 end
 
 return config
