@@ -25,3 +25,13 @@ nmap {
   {'<Leader>gm',cmd('GitMessenger'),opts(noremap,silent)},
   {'<Leader>cp',cmd('Colortils picker'),opts(noremap,silent)},
 }
+
+vim.api.nvim_create_user_command('TitleCase', function()
+  vim.cmd("s/\\<./\\u&/g")
+  vim.cmd("noh")
+end, {
+    nargs = "*",
+    desc = "Say hi to someone",
+})
+
+-- ":s/\<./\u&/g"
