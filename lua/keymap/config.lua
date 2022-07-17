@@ -15,22 +15,21 @@ xmap {' ','',opts(noremap)}
 -- usage example
 nmap {
   -- remove trailing white space
-  {"<Leader>t",cmd('TrimTrailingWhitespace'),opts(noremap)},
+  {'<Leader>t',cmd('TrimTrailingWhitespace'),opts(noremap)},
   -- window jump
-  {"<C-h>",'<C-w>h',opts(noremap)},
-  {"<C-l>",'<C-w>l',opts(noremap)},
-  {"<C-j>",'<C-w>j',opts(noremap)},
-  {"<C-k>",'<C-w>k',opts(noremap)},
-  {'<Leader>j',":BufferLineCyclePrev<CR>", opts(noremap)},
-  {'<Leader>k',":BufferLineCycleNext<CR>", opts(noremap)},
-  {'<Leader>bd',":bd!<CR>", opts(noremap)},
-  {"J", "10j", opts(noremap)},
-  {"K", "10k", opts(noremap)},
-  {"H", "^", opts(noremap)},
-  {"L", "$", opts(noremap)},
-  {"<Leader>t", ":NvimTreeToggle<CR>", opts(noremap)},
-  {"<Leader>gm", ":GitMessenger<CR>", opts(noremap)},
-  {"<Leader>cp", ":Colortils picker<CR>", opts(noremap)},
+  {'<C-h>','<C-w>h',opts(noremap)},
+  {'<C-l>','<C-w>l',opts(noremap)},
+  {'<C-j>','<C-w>j',opts(noremap)},
+  {'<C-k>','<C-w>k',opts(noremap)},
+  -- buffer cycle
+  {'<Leader>h',':BufferLineCyclePrev<CR>', opts(noremap)},
+  {'<Leader>l',':BufferLineCycleNext<CR>', opts(noremap)},
+  {'<Leader>bd',':bd!<CR>', opts(noremap)},
+  -- quick moments
+  {'J', '10j', opts(noremap)},
+  {'K', '10k', opts(noremap)},
+  {'H', '^', opts(noremap)},
+  {'L', '$', opts(noremap)},
 }
 
 -- insert mode

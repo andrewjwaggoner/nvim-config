@@ -1,5 +1,4 @@
--- Put plugins key definitionas in this file
-
+-- Put plugins key definitions in this file
 require('keymap.config')
 local key = require('core.keymap')
 local nmap = key.nmap
@@ -20,4 +19,9 @@ nmap {
   {'<Leader>b',cmd('Telescope buffers'),opts(noremap,silent)},
   {'<Leader>fa',cmd('Telescope live_grep'),opts(noremap,silent)},
   {'<Leader>ff',cmd('Telescope find_files'),opts(noremap,silent)},
+  -- Markdown Preview
+  {'<Leader>mp',cmd('MarkdownPreview'),opts(noremap,silent)},
+  {'<Leader>t',cmd('NvimTreeToggle'),opts(noremap,silent)},
+  {'<Leader>gm',cmd('GitMessenger'),opts(noremap,silent)},
+  {'<Leader>cp',cmd('Colortils picker'),opts(noremap,silent)},
 }

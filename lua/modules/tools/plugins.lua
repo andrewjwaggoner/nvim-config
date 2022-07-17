@@ -12,3 +12,25 @@ plugin {'nvim-telescope/telescope.nvim',
   }
 }
 
+-- Plugin for markdown live server
+plugin {'iamcco/markdown-preview.nvim',
+  cmd = 'MarkdownPreview',
+  config = conf.markdown_preview
+}
+
+-- Surround & plugin for repeating
+plugin {'tpope/vim-surround'}
+plugin {'tpope/vim-repeat'}
+
+-- Git wrapper
+plugin {'tpope/vim-fugitive'}
+
+-- Reveal git information quickly
+plugin {'rhysd/git-messenger.vim'}
+
+-- Color picker
+plugin {'max397574/colortils.nvim',
+  cmd = "Colortils",
+  config = conf.colortils
+}
+

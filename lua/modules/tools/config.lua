@@ -30,4 +30,12 @@ function config.telescope()
     require('telescope').load_extension('fzy_native')
 end
 
+function config.markdown_preview()
+  vim.fn["mkdp#util#install"]()
+end
+
+function config.colortils()
+  require('colortils').setup({})
+end
+
 return config

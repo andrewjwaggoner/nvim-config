@@ -46,10 +46,6 @@ function config.nvim_tree()
   })
 end
 
-function config.colortils()
-  require('colortils').setup({})
-end
-
 function config.nvim_colorizer()
   require('colorizer').setup({})
 end

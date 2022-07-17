@@ -14,17 +14,16 @@
 
 ## Updating your lolcat/figler header
 
-
 echo 'Neovim' | figlet -f "3d.flf" -c | lolcat > ~/.config/nvim/static/neovim.cat
 
-## Note about ? appearing in neovim
+## about ? appearing in neovim
 
 If you find that your display looks like this: <Insert Image> Where icons are
 replaced with '?', you need to be using a patched font. Go here: https://www.nerdfonts.com
 
 TLDR; I like SourceCodePro, so I download the SourceCodePro Nerd font and
 install it. Here's a github URL to cURL: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
-## What is this
+## What is this?
 
 This is a fork of Glepnir's Cosynvim configuration. https://github.com/glepnir/cosynvim
 
