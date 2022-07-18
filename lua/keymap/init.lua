@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command('TitleCase', function()
   vim.cmd("noh")
 end, {
     nargs = "*",
-    desc = "Say hi to someone",
+    desc = "Change line to have title casing",
 })
 
 -- ":s/\<./\u&/g"

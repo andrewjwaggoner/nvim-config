@@ -14,7 +14,6 @@ plugin {'nvim-telescope/telescope.nvim',
 
 -- Plugin for markdown live server
 plugin {'iamcco/markdown-preview.nvim',
-  cmd = 'MarkdownPreview',
   config = conf.markdown_preview
 }
 
