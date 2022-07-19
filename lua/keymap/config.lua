@@ -30,6 +30,9 @@ nmap {
   {'K', '10k', opts(noremap)},
   {'H', '^', opts(noremap)},
   {'L', '$', opts(noremap)},
+  -- quick save/exit commands
+  {'<Leader>qa', ':qa<CR>', opts(noremap)},
+  {'<Leader>w', ':w<CR>', opts(noremap)},
 }
 
 -- insert mode
