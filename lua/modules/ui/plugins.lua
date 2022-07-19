@@ -1,10 +1,10 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.ui.config')
 
--- Color scheme
+-- color scheme
 plugin {'glepnir/zephyr-nvim', config = conf.zephyr}
 
--- Dashboard
+-- dashboard
 plugin {'glepnir/dashboard-nvim',config = conf.dashboard}
 
 -- status line plugin.
@@ -14,20 +14,31 @@ plugin {'glepnir/galaxyline.nvim',
   requires = 'kyazdani42/nvim-web-devicons'
 }
 
--- File explorer
+-- file explorer
 plugin {'kyazdani42/nvim-tree.lua',
   cmd = 'NvimTreeToggle',
   config = conf.nvim_tree,
   requires = 'kyazdani42/nvim-web-devicons'
 }
 
--- Buffer plugin
+-- buffer plugin
 plugin {'akinsho/nvim-bufferline.lua',
    config = conf.nvim_bufferline,
    requires = 'kyazdani42/nvim-web-devicons'
 }
 
--- Colorizer for color codes
+-- colorizer for color codes
 plugin {'norcalli/nvim-colorizer.lua',
   config = conf.nvim_colorizer
 }
+
+-- highlighting
+plugin {'nvim-treesitter/nvim-treesitter',
+  event = 'BufRead',
+  run = ':TSUpdate',
+  after = 'telescope.nvim',
+  config = conf.nvim_treesitter,
+}
+
+plugin {'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter'}
+

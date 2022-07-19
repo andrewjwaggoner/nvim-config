@@ -1,6 +1,6 @@
 -- recommend some vim mode key defines in this file
 local keymap = require('core.keymap')
-local nmap,imap,cmap,xmap = keymap.nmap,keymap.imap,keymap.cmap,keymap.xmap
+local nmap,imap,cmap,xmap,vmap = keymap.nmap,keymap.imap,keymap.cmap,keymap.xmap,keymap.vmap
 local silent,noremap = keymap.silent,keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
@@ -12,7 +12,10 @@ vim.g.mapleader = " "
 nmap {' ','',opts(noremap)}
 xmap {' ','',opts(noremap)}
 
--- usage example
+-- Reselect visual block after indent/outdent
+vmap({ '<', '<gv',opts(noremap)})
+vmap({ '>', '>gv',opts(noremap)})
+
 nmap {
   -- remove trailing white space
   {'<Leader>t',cmd('TrimTrailingWhitespace'),opts(noremap)},
@@ -33,6 +36,8 @@ nmap {
   -- quick save/exit commands
   {'<Leader>qa', ':qa<CR>', opts(noremap)},
   {'<Leader>w', ':w<CR>', opts(noremap)},
+  -- Open a Quickfix window for the last search.
+  {"<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>"},
 }
 
 -- insert mode
