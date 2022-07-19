@@ -1,6 +1,6 @@
 <h1 align="center">
- Neovim Configuration (From Cosynvim)
-</h1>
+[Screen Shot 2022-07-19 at 17 08 15](https://user-images.githubusercontent.com/11034778/179855960-a54de2e9-91f1-42f2-9038-a3a3803336b5.png)
+</h1>!
 
 ## What Is This?
 
