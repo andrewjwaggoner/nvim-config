@@ -38,10 +38,13 @@ back on for reference.
 │   └── package.json
 ├── static                         dashboard logo
 │  └── neovim.cat
-└── lsp                            language servers (install your own)
+└── lsp_servers                            language servers (install your own)
 
 ```
 A nice structure, right? Looks complicated? You can delete any folder except the core and keymap modules.
+
+### Plugins I'm Using
+
 
 ### How To Install Plugins
 
