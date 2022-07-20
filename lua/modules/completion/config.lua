@@ -32,14 +32,15 @@ end
 
 function config.nvim_cmp()
 	local cmp = require("cmp")
-
-	cmp.setup({
-		preselect = cmp.PreselectMode.Item,
-		window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-		}
-  })
+  if (cmp) then
+    cmp.setup({
+      preselect = cmp.PreselectMode.Item,
+      window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+      }
+    })
+  end
 end
 
 function config.lua_snip()

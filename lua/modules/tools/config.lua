@@ -30,6 +30,9 @@ function config.telescope()
     require('telescope').load_extension('fzy_native')
 end
 
+function config.nvim_surround()
+  require('nvim-surround').setup({})
+end
 function config.markdown_preview()
   vim.fn["mkdp#util#install"]()
 end

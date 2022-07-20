@@ -17,9 +17,10 @@ plugin {'iamcco/markdown-preview.nvim',
   config = conf.markdown_preview
 }
 
--- Surround & plugin for repeating
-plugin {'tpope/vim-surround'}
-plugin {'tpope/vim-repeat'}
+-- Surround plugin
+plugin {'kylechui/nvim-surround',
+  config = conf.nvim_surround
+}
 
 -- Git wrapper
 plugin {'tpope/vim-fugitive'}

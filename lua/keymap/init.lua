@@ -6,6 +6,7 @@ local silent,noremap = key.silent,key.noremap
 local opts = key.new_opts
 local cmd = key.cmd
 
+-- I'm putting tool-based mappings in here, for no good reason.
 nmap {
   -- packer
   {'<Leader>pu',cmd('PackerUpdate'),opts(noremap,silent)},
@@ -15,15 +16,18 @@ nmap {
   {'<Leader>n',cmd('DashboardNewFile'),opts(noremap,silent)},
   {'<Leader>ss',cmd('SessionSave'),opts(noremap,silent)},
   {'<Leader>sl',cmd('SessionLoad'),opts(noremap,silent)},
-  -- Telescope
+  -- telescope
   {'<Leader>b',cmd('Telescope buffers'),opts(noremap,silent)},
   {'<Leader>fa',cmd('Telescope live_grep'),opts(noremap,silent)},
   {'<Leader>ff',cmd('Telescope find_files'),opts(noremap,silent)},
-  -- Markdown Preview
+  -- markdown preview
   {'<Leader>mp',cmd('MarkdownPreview'),opts(noremap,silent)},
   {'<Leader>t',cmd('NvimTreeToggle'),opts(noremap,silent)},
   {'<Leader>gm',cmd('GitMessenger'),opts(noremap,silent)},
   {'<Leader>cp',cmd('Colortils picker'),opts(noremap,silent)},
+  -- bufferline
+  {'<Leader>h',':BufferLineCyclePrev<CR>', opts(noremap)},
+  {'<Leader>l',':BufferLineCycleNext<CR>', opts(noremap)},
 }
 
 vim.api.nvim_create_user_command('TitleCase', function()

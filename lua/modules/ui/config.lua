@@ -47,7 +47,7 @@ function config.nvim_tree()
 end
 
 function config.nvim_colorizer()
-  require('colorizer').setup({})
+  require('colorizer').setup({'*'}) -- do it on all filetypes
 end
 
 function config.nvim_treesitter()
