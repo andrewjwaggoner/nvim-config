@@ -15,8 +15,6 @@ vmap({ '<', '<gv',opts(noremap)})
 vmap({ '>', '>gv',opts(noremap)})
 
 nmap {
-  -- remove trailing white space
-  {'<Leader>t',cmd('TrimTrailingWhitespace'),opts(noremap)},
   -- window jump
   {'<C-h>','<C-w>h',opts(noremap)},
   {'<C-l>','<C-w>l',opts(noremap)},

@@ -33,12 +33,10 @@ plugin {'norcalli/nvim-colorizer.lua',
 }
 
 -- highlighting
+plugin {'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter'}
 plugin {'nvim-treesitter/nvim-treesitter',
   event = 'BufRead',
   run = ':TSUpdate',
   after = 'telescope.nvim',
   config = conf.nvim_treesitter,
 }
-
-plugin {'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter'}
-
