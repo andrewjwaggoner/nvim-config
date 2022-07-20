@@ -33,7 +33,9 @@ nmap {
   {'<Leader>bd',':bd!<CR>', opts(noremap)},
   {'<Leader><ESC>',':qa!<CR>', opts(noremap)},
   -- open a Quickfix window for the last search.
-  {"<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>"},
+  {"<Leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>"},
+  -- search recent files
+  {"<Leader>br", cmd("browse oldfiles")}
 }
 
 -- custom commands for easy casing functions

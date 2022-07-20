@@ -25,6 +25,10 @@ function config.dashboard()
       desc = 'Find File                               ',
       action = 'Telescope find_files find_command=rg,--hidden,--files',
       shortcut = 'SPC f f'},
+      {icon = '  ',
+      desc = 'Browse Recent                           ',
+      action = 'Browse oldfiles',
+      shortcut = 'SPC b r'},
     }
 end
 
