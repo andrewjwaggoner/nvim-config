@@ -46,20 +46,20 @@ the core and keymap modules.
 
 ### Plugins I'm Using
 
-[nvm-cmp](https://github.com/hrsh7th/nvim-cmp) for LSP completion engine  
-[luasnip](https://github.com/L3MON4D3/LuaSnip) for snippet engine  
-[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for highlighting  
-[telescope](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
-[vim-surround](https://github.com/tpope/vim-surround) for better surround features  
-[vim-fugitive](https://github.com/tpope/vim-fugitive) for easy git commands  
-[git-messenger](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
 [colortils](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
-[zephyr-nvim](https://github.com/glepnir/zephyr-nvim) for color scheme  
 [dashboard-nvim](https://github.com/glepnir/dashboard-nvim) for simple splash screen  
 [galaxyline](https://github.com/glepnir/galaxyline.nvim) for easy customizable status line  
-[nvim-tree](https://github.com/kyazdani42/nvim-tree.lua) for file explorer (requires patched font)  
+[git-messenger](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
+[luasnip](https://github.com/L3MON4D3/LuaSnip) for snippet engine  
 [nvim-bufferline](https://github.com/akinsho/bufferline.nvim) for tab functionality  
 [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua) for simple color code highlighting  
+[nvim-surround](https://github.com/tpope/vim-surround) for better surround features  
+[nvim-tree](https://github.com/kyazdani42/nvim-tree.lua) for file explorer (requires patched font)  
+[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for highlighting  
+[nvm-cmp](https://github.com/hrsh7th/nvim-cmp) for LSP completion engine  
+[telescope](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
+[vim-fugitive](https://github.com/tpope/vim-fugitive) for easy git commands  
+[zephyr-nvim](https://github.com/glepnir/zephyr-nvim) for color scheme  
 
 ### How To Install Other Plugins
 
