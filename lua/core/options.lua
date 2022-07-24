@@ -95,5 +95,5 @@ vim.opt.number         = true;
 vim.opt.colorcolumn    = "80";
 vim.opt.foldenable     = true;
 vim.opt.signcolumn     = "yes";
-vim.opt.conceallevel   = 2;
+vim.opt.conceallevel   = 0;
 vim.opt.concealcursor  = "niv";
