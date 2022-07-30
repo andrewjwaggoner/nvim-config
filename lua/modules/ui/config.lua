@@ -28,7 +28,7 @@ function config.dashboard()
       {icon = '  ',
       desc = 'Browse Recent                           ',
       action = 'Browse oldfiles',
-      shortcut = 'SPC b r'},
+      shortcut = 'SPC f r'},
     }
 end
 

@@ -33,7 +33,7 @@ nmap {
   -- open a Quickfix window for the last search.
   {"<Leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>"},
   -- search recent files
-  {"<Leader>br", cmd("browse oldfiles")}
+  {"<Leader>fr", cmd("Telescope oldfiles")}
 }
 
 -- custom commands for easy casing functions
