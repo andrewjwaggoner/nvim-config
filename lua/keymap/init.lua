@@ -1,10 +1,12 @@
 -- Put plugins key definitions in this file
-require('keymap.config')
 local key = require('core.keymap')
-local nmap = key.nmap
-local silent,noremap = key.silent,key.noremap
-local opts = key.new_opts
-local cmd = key.cmd
+local keymap = require('core.keymap')
+local opts,cmd = key.new_opts,key.cmd
+local nmap,xmap,vmap = keymap.nmap,keymap.xmap,keymap.vmap
+local silent,noremap = keymap.silent,keymap.noremap
+
+-- Leader key!
+vim.g.mapleader = " "
 
 -- I'm putting tool-based mappings in here, for no good reason.
 nmap {
@@ -20,6 +22,7 @@ nmap {
   {'<Leader>b',cmd('Telescope buffers'),opts(noremap,silent)},
   {'<Leader>fa',cmd('Telescope live_grep'),opts(noremap,silent)},
   {'<Leader>ff',cmd('Telescope find_files'),opts(noremap,silent)},
+  {"<Leader>fr", cmd("Telescope oldfiles")}, -- search recent files
   -- markdown preview
   {'<Leader>mp',cmd('MarkdownPreview'),opts(noremap,silent)},
   {'<Leader>t',cmd('NvimTreeToggle'),opts(noremap,silent)},
@@ -28,14 +31,40 @@ nmap {
   -- bufferline
   {'<Leader>h',':BufferLineCyclePrev<CR>', opts(noremap)},
   {'<Leader>l',':BufferLineCycleNext<CR>', opts(noremap)},
+  -- open a Quickfix window for the last search.
+  {"<Leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>"},
 }
 
-vim.api.nvim_create_user_command('TitleCase', function()
-  vim.cmd("s/\\<./\\u&/g")
-  vim.cmd("noh")
-end, {
-    nargs = "*",
-    desc = "Change line to have title casing",
-})
+xmap {
+  {' ','',opts(noremap)},
+  -- quick movements
+  {'J', '5j', opts(noremap)},
+  {'K', '5k', opts(noremap)},
+  {'H', '^', opts(noremap)},
+  {'L', '$', opts(noremap)},
+}
 
--- ":s/\<./\u&/g"
+vmap {
+  -- reselect visual block after indent/outdent
+  {'<', '<gv',opts(noremap)},
+  {'>', '>gv',opts(noremap)},
+}
+
+nmap {
+  {' ','',opts(noremap)},
+  -- window jump
+  {'<C-h>','<C-w>h',opts(noremap)},
+  {'<C-l>','<C-w>l',opts(noremap)},
+  {'<C-j>','<C-w>j',opts(noremap)},
+  {'<C-k>','<C-w>k',opts(noremap)},
+  -- quick movements
+  {'J', '10j', opts(noremap)},
+  {'K', '10k', opts(noremap)},
+  {'H', '^', opts(noremap)},
+  {'L', '$', opts(noremap)},
+  -- quick save/exit commands
+  {'<Leader>q', ':q<CR>', opts(noremap)},
+  {'<Leader>ww', ':w<CR>', opts(noremap)},
+  {'<Leader>bd',':bd!<CR>', opts(noremap)},
+  {'<Leader><ESC>',':qa!<CR>', opts(noremap)},
+}
