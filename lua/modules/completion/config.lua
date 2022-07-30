@@ -1,7 +1,6 @@
 local config = {}
 
 function config.nvim_cmp()
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   local cmp = require('cmp')
 
   if (cmp) then
@@ -11,7 +10,6 @@ function config.nvim_cmp()
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-      capabilities = capabilities,
       flags = {
         debounce_text_changes = 150,
       }
@@ -20,13 +18,12 @@ function config.nvim_cmp()
 end
 
 function config.lua_snip()
-  local ls = require('luasnip')
-  ls.config.set_config({
+  require('luasnip').config.set_config({
     history = true,
-    updateevents = "TextChanged,TextChangedI",
+    updateevents = 'TextChanged,TextChangedI',
   })
-  require("luasnip.loaders.from_vscode").lazy_load()
-  require("luasnip.loaders.from_vscode").lazy_load({
+  require('luasnip.loaders.from_vscode').lazy_load()
+  require('luasnip.loaders.from_vscode').lazy_load({
     paths = { './snippets/' }
   })
 end

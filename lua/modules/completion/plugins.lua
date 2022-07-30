@@ -10,16 +10,12 @@ plugin { 'hrsh7th/nvim-cmp',
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-    { 'saadparwaiz1/cmp_luasnip', after = "LuaSnip" },
+    { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+    { 'L3MON4D3/LuaSnip', after = 'nvim-cmp', config = conf.lua_snip }
   },
 }
 
 -- Snippet Engine
-plugin { "L3MON4D3/LuaSnip",
-  event = 'InsertEnter',
-  config = conf.lua_snip,
-}
-
 plugin { 'rafamadriz/friendly-snippets',
   config = conf.friendly_snippets,
 }
