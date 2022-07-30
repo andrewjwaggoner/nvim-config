@@ -20,7 +20,7 @@ nmap {
   { '<Leader>h', ':BufferLineCyclePrev<CR>', opts(noremap) },
   { '<Leader>l', ':BufferLineCycleNext<CR>', opts(noremap) },
   -- open a Quickfix window for the last search.
-  { "<Leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>" },
+  { '<Leader>?', ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>" },
   -- save/exit commands
   { '<Leader><ESC>', ':qa!<CR>', opts(noremap) },
 
@@ -39,7 +39,7 @@ nmap {
   { '<Leader>fb', cmd('Telescope buffers'), opts(noremap, silent) },
   { '<Leader>fa', cmd('Telescope live_grep'), opts(noremap, silent) },
   { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
-  { "<Leader>fr", cmd("Telescope oldfiles") }, -- search recent files
+  { '<Leader>fr', cmd('Telescope oldfiles') }, -- search recent files
   -- previews
   { '<Leader>pm', cmd('MarkdownPreview'), opts(noremap, silent) },
   -- quick save/exit commands

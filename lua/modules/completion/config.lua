@@ -1,13 +1,19 @@
 local config = {}
 
 function config.nvim_cmp()
-  local cmp = require("cmp")
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local cmp = require('cmp')
+
   if (cmp) then
     cmp.setup({
       preselect = cmp.PreselectMode.Item,
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
+      },
+      capabilities = capabilities,
+      flags = {
+        debounce_text_changes = 150,
       }
     })
   end

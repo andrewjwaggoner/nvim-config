@@ -5,7 +5,7 @@ function config.nvim_surround()
 end
 
 function config.markdown_preview()
-  vim.fn["mkdp#util#install"]()
+  vim.fn['mkdp#util#install']()
 end
 
 function config.colortils()
@@ -22,10 +22,10 @@ function config.telescope()
   require('telescope').setup {
     defaults = {
       layout_config = {
-        horizontal = { prompt_position = "top", results_width = 0.6 },
+        horizontal = { prompt_position = 'top', results_width = 0.6 },
         vertical = { mirror = false },
       },
-      initial_mode = "normal",
+      initial_mode = 'normal',
       sorting_strategy = 'ascending',
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,

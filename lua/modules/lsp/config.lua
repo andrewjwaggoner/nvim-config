@@ -1,7 +1,7 @@
 local config = {}
 
 function config.nvim_lsp()
-  require("nvim-lsp-installer").setup {}
+  require('nvim-lsp-installer').setup {}
   require 'lspconfig'.sumneko_lua.setup {
     settings = {
       Lua = {

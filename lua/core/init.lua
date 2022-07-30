@@ -1,5 +1,5 @@
 local vim       = vim
-local home      = os.getenv("HOME")
+local home      = os.getenv('HOME')
 local cache_dir = home .. '/.cache/nvim/'
 
 -- Create cache dir and subs dir
@@ -14,10 +14,10 @@ local createdir = function()
 
   -- Create folders as needed
   if vim.fn.isdirectory(cache_dir) == 0 then
-    os.execute("mkdir -p " .. cache_dir)
+    os.execute('mkdir -p ' .. cache_dir)
     for _, v in pairs(data_dir) do
       if vim.fn.isdirectory(v) == 0 then
-        os.execute("mkdir -p " .. v)
+        os.execute('mkdir -p ' .. v)
       end
     end
   end
