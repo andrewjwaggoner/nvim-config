@@ -20,10 +20,14 @@ back on for reference.
 │   │   ├── options.lua            vim options
 │   │   └── pack.lua               hack for packer
 │   ├── keymap                     your keymaps go here
-│   │   ├── config.lua
 │   │   └── init.lua
 │   └── modules                    plugins go here, can customize structure 
-│       ├── completion             LSP (Language Server Parser) folder
+│       ├── lsp                    LSP (Language Server Parser) folder
+│       │   ├── config.lua
+│       │   └── plugins.lua
+│       ├── commands               folder for custom commands
+│       │   └── init.lua
+│       ├── completion             completion plugin folder
 │       │   ├── config.lua
 │       │   └── plugins.lua
 │       ├── tools                 tooling plugins (Like git, colorpicker, etc..)
@@ -36,9 +40,8 @@ back on for reference.
 ├── snippets                       snippets 
 │   ├── lua.json
 │   └── package.json
-├── static                         dashboard logo
-│  └── neovim.cat
-└── lsp_servers                    language servers (install your own)
+└── static                         dashboard logo
+     └── neovim.cat
 
 ```
 A nice structure, right? Looks complicated? You can delete any folder except 

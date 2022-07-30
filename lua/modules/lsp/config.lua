@@ -27,7 +27,8 @@ function config.nvim_lsp()
   require 'lspconfig'.html.setup {}
   require 'lspconfig'.csharp_ls.setup {}
   require 'lspconfig'.marksman.setup {}
-
+  require 'lspconfig'.pyright.setup {}
+  require 'lspconfig'.eslint.setup {}
 end
 
 return config

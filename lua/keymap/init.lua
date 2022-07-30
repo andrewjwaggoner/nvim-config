@@ -1,4 +1,5 @@
 -- Put plugins key definitions in this file
+require('modules.commands') -- current a hack until I understand lua better. It's referenced here because it works
 local key = require('core.keymap')
 local keymap = require('core.keymap')
 local opts, cmd = key.new_opts, key.cmd
