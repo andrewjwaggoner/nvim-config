@@ -17,23 +17,23 @@ function config.dashboard()
   db.preview_file_height = 18
   db.preview_file_width = 80
   db.custom_center = {
-      {icon = '  ',
+    { icon = '  ',
       desc = 'Update Plugins                          ',
       shortcut = 'SPC p u',
-      action ='PackerUpdate'},
-      {icon = '  ',
+      action = 'PackerUpdate' },
+    { icon = '  ',
       desc = 'Find File                               ',
       action = 'Telescope find_files find_command=rg,--hidden,--files',
-      shortcut = 'SPC f f'},
-      {icon = '  ',
+      shortcut = 'SPC f f' },
+    { icon = '  ',
       desc = 'Browse Recent                           ',
       action = 'Browse oldfiles',
-      shortcut = 'SPC f r'},
-    }
+      shortcut = 'SPC f r' },
+  }
 end
 
 function config.nvim_bufferline()
-  require('bufferline').setup{
+  require('bufferline').setup {
     options = {
       modified_icon = '✥',
       buffer_close_icon = '',
@@ -43,21 +43,21 @@ function config.nvim_bufferline()
 end
 
 function config.nvim_tree()
-	require('nvim-tree').setup({
-		disable_netrw = false,
-		hijack_cursor = true,
-		hijack_netrw = true,
+  require('nvim-tree').setup({
+    disable_netrw = false,
+    hijack_cursor = true,
+    hijack_netrw = true,
   })
 end
 
 function config.nvim_colorizer()
-  require('colorizer').setup({'*'}) -- do it on all filetypes
+  require('colorizer').setup({ '*' }) -- do it on all filetypes
 end
 
 function config.nvim_treesitter()
   vim.api.nvim_command('set foldmethod=expr')
   vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
-  require'nvim-treesitter.configs'.setup {
+  require 'nvim-treesitter.configs'.setup {
     ensure_installed = "all",
     ignore_install = { 'phpdoc' },
     highlight = {

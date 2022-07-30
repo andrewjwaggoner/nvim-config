@@ -1,21 +1,21 @@
-local vim = vim
-local home    = os.getenv("HOME")
-local cache_dir  = home .. '/.cache/nvim/'
+local vim       = vim
+local home      = os.getenv("HOME")
+local cache_dir = home .. '/.cache/nvim/'
 
 -- Create cache dir and subs dir
-local createdir = function ()
+local createdir = function()
   local data_dir = {
-    cache_dir..'backup',
-    cache_dir..'session',
-    cache_dir..'swap',
-    cache_dir..'tags',
-    cache_dir..'undo'
+    cache_dir .. 'backup',
+    cache_dir .. 'session',
+    cache_dir .. 'swap',
+    cache_dir .. 'tags',
+    cache_dir .. 'undo'
   }
-  
+
   -- Create folders as needed
   if vim.fn.isdirectory(cache_dir) == 0 then
     os.execute("mkdir -p " .. cache_dir)
-    for _,v in pairs(data_dir) do
+    for _, v in pairs(data_dir) do
       if vim.fn.isdirectory(v) == 0 then
         os.execute("mkdir -p " .. v)
       end
@@ -44,8 +44,8 @@ vim.g.loaded_netrw             = 1
 vim.g.loaded_netrwPlugin       = 1
 vim.g.loaded_netrwSettings     = 1
 vim.g.loaded_netrwFileHandlers = 1
-vim.g.did_load_filetypes = 0
-vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes       = 0
+vim.g.do_filetype_lua          = 1
 
 local pack = require('core.pack')
 

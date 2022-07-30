@@ -1,4 +1,4 @@
-local cache_dir  = os.getenv("HOME") .. '/.cache/nvim/'
+local cache_dir = os.getenv("HOME") .. '/.cache/nvim/'
 
 vim.opt.termguicolors  = true;
 vim.opt.mouse          = "nv";
@@ -47,7 +47,7 @@ vim.opt.startofline    = false;
 vim.opt.whichwrap      = "h,l,<,>,[,],~";
 vim.opt.splitbelow     = true;
 vim.opt.splitright     = true;
-vim.opt.switchbuf      = "useopen"; 
+vim.opt.switchbuf      = "useopen";
 vim.opt.backspace      = "indent,eol,start";
 vim.opt.diffopt        = "filler,iwhite,internal,algorithm:patience";
 vim.opt.completeopt    = "menu,menuone,noselect";

@@ -2,7 +2,7 @@ local config = {}
 
 function config.nvim_lsp()
   require("nvim-lsp-installer").setup {}
-  require'lspconfig'.sumneko_lua.setup{
+  require 'lspconfig'.sumneko_lua.setup {
     settings = {
       Lua = {
         runtime = {
@@ -11,7 +11,7 @@ function config.nvim_lsp()
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = {'vim'},
+          globals = { 'vim' },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -24,9 +24,9 @@ function config.nvim_lsp()
       }
     }
   }
-  require'lspconfig'.html.setup {}
-  require'lspconfig'.csharp_ls.setup{}
-  require'lspconfig'.marksman.setup{}
+  require 'lspconfig'.html.setup {}
+  require 'lspconfig'.csharp_ls.setup {}
+  require 'lspconfig'.marksman.setup {}
 
 end
 
