@@ -64,6 +64,8 @@ nmap {
   -- open tool commands (Watch out for the naming conventions here)
   { '<Leader>ogm', cmd('GitMessenger'), opts(noremap, silent) },
   { '<Leader>ocp', cmd('Colortils picker'), opts(noremap, silent) },
+  { '<Leader>ch', cmd('AutoCmpOn'), opts(noremap, silent) },
+  { '<Leader>cl', cmd('AutoCmpOff'), opts(noremap, silent) },
 }
 
 xmap {
