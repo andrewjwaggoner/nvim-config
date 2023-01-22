@@ -6,12 +6,8 @@ Install ripgrep
 
 ## What Is This?
 
-This is a fork of Glepnir's Cosynvim configuration. https://github.com/glepnir/cosynvim
+This is my person neovim configuration. It used to be based on Glepnir's configuration, but I've since rewritten it from scratch.
 
-Glepnir did all the heavy lifting for this configuration. I've mostly touched
-everything but the `core/pack.lua` file. Check the above github
-link for configuring this in more detail. Below are the relevant pieces I look
-back on for reference.
 
 ## Structure
 ```
