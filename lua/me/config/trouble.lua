@@ -5,6 +5,6 @@ function trouble.config()
   mode = "document_diagnostics",
   auto_close = true,
   }
-end 
+end
 
 return trouble

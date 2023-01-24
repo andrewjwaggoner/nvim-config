@@ -37,6 +37,7 @@ vim.opt.scrolloff         = 2;
 vim.opt.shada             = "!,'300,<50,@100,s10,h";
 vim.opt.shiftround        = true;
 vim.opt.shiftwidth        = 2;
+vim.opt.shortmess         = "filnxtToOFI";
 vim.opt.showbreak         = '↳  ';
 vim.opt.showmode          = false;
 vim.opt.smartcase         = true;
