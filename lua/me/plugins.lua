@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
   use { 'williamboman/mason-lspconfig.nvim' }
   use { 'williamboman/mason.nvim' }
 
-  if packer_bootstrap then -- Automatically set up your configuration after cloning packer.nvim. 
+  if packer_bootstrap then
     require('packer').sync()
   end
 end)
