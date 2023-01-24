@@ -1,4 +1,4 @@
-local settings = require ('ajw.config')
+local settings = require ('me.config')
 
 print(settings.galaxyline)
 

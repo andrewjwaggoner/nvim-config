@@ -24,7 +24,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command('GitCommit', function()
-  vim.cmd('!git commit -a')
+  vim.cmd('Git commit -a')
 end, {
   nargs = '*',
   desc = 'Change line to have upper casing',
