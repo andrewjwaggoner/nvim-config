@@ -11,6 +11,23 @@ nvim_lsp.config = function()
       }
     }
   }
+
+  require 'lspconfig'.awk_ls.setup {}
+  require 'lspconfig'.bashls.setup {}
+  require 'lspconfig'.clangd.setup {}
+  require 'lspconfig'.cmake.setup {}
+  require 'lspconfig'.cssls.setup {}
+  require 'lspconfig'.dockerls.setup {}
+  require 'lspconfig'.jsonls.setup {}
+  require 'lspconfig'.zk.setup {}
+  require 'lspconfig'.csharp_ls.setup {}
+  require 'lspconfig'.pyright.setup {}
+  require 'lspconfig'.sqlls.setup {}
+  require 'lspconfig'.rust_analyzer.setup {}
+  require 'lspconfig'.tsserver.setup {}
+  require 'lspconfig'.vimls.setup {}
+  require 'lspconfig'.yamlls.setup {}
+
 end
 
 return nvim_lsp

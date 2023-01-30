@@ -35,9 +35,11 @@ return require('packer').startup(function(use)
   use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons', config = settings.trouble.config }
   use { 'rhysd/git-messenger.vim' }
   use { 'tpope/vim-fugitive' }
-  use { 'neovim/nvim-lspconfig', config=settings.nvim_lsp.config }
-  use { 'williamboman/mason-lspconfig.nvim' }
-  use { 'williamboman/mason.nvim' }
+  use {
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config },
+    { 'neovim/nvim-lspconfig', config=settings.nvim_lsp.config },
+  }
 
   if packer_bootstrap then
     require('packer').sync()

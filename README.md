@@ -11,61 +11,31 @@ This is my person neovim configuration. It used to be based on Glepnir's configu
 
 ## Structure
 ```
-├── init.lua  
+├── init.lua
 ├── lua
-│   ├── core                       core functionality
-│   │   └── pack.lua               hack for packer
-│   │   ├── init.lua
-│   │   ├── options.lua            vim options
-│   │   ├── utils.lua              contains methods for cleaner keymaps
-│   ├── keymap                     your keymaps go here
-│   │   ├── init.lua
-│   │   └── lsp.lua                LSP keymaps that attached to active buffers
-│   └── modules                    plugins go here, can customize structure 
-│       ├── lsp                    LSP (Language Server Parser) folder
-│       │   ├── config.lua
-│       │   └── plugins.lua
-│       ├── commands               folder for custom commands
-│       │   └── init.lua
-│       ├── completion             completion plugin folder
-│       │   ├── config.lua
-│       │   └── plugins.lua
-│       ├── tools                  tooling plugins (Like git, colorpicker, etc..)
-│       │   ├── config.lua
-│       │   └── plugins.lua
-│       └── ui                     user interface plugin & configuration
-│           ├── config.lua
-│           ├── galaxyline.lua
-│           └── plugins.lua
-├── snippets                       snippets 
-│   ├── lua.json
-│   └── package.json
-
+│   └── me
+│      ├── config                 this folder houses all of our setup functions
+│      │   └── ...                each file is a setup function for a specific plugin
+│      ├── init.lua               require file so we can just include `lua.me`
+│      ├── options.lua            vim options
+│      ├── plugins.lua            plugin manager
+│      ├── autocommands.lua       your custom autocommands go here
+│      └── mappings.lua           your keymaps go here
 ```
-A nice structure, right? Looks complicated? You can delete any folder except 
-the core folder easily. Obviously, since it's Neovim, you can delete literally
+A nice structure, right? Looks complicated? Obviously, since it's Neovim, you can delete literally
 ANYTHING you'd like! This structure is mostly for organization, and I've tried
 to keep it idiomatic, so looking at other configs and examples should be
-straightforward.
+straightforward. There are still a few things I need to setup, like using plugin/after for specific 
+mappings instead of the global mappings.lua file.
 
 ### Plugins I'm Using
 
-[Luasnip](https://github.com/L3MON4D3/LuaSnip) for snippet engine  
 [cabline.nvim](https://github.com/andrewjwaggoner/cabline.nvim) custom tabline for my own workflow  
-[cmp-buffer](https://github.com/hrsh7th/cmp-buffer) cmp source for buffer words  
-[cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) cmp source for vim commandline  
-[cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) may be able to remove  
-[cmp-path](https://github.com/hrsh7th/cmp-path) cmp for directories  
-[cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) luasnip completion source for nvim-cmp  
 [colortils.nvim](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
-[dashboard-nvim](https://github.com/glepnir/dashboard-nvim) for simple splash screen  
-[friendly-snippets](https://github.com/rafamadriz/friendly-snippets) set of common snippets for a lot of different languages.  
-[galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim) for easy customizable status line  
 [git-messenger.nvim](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
-[gruvbox](https://github.com/morhetz/gruvbox) other color scheme, not used actively  
-[lsp-signature.nvim](https://github.com/ray-x/lsp_signature.nvim) shows function signature as you type  
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  
-[nvim-cmp](https://github.com/hrsh7th/nvim-cmp) for LSP completion engine  
+[mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) for blending mason and lspconfig  
+[mason.nvim](https://github.com/williamboman/mason.nvim) for handling LSP/DAP stuff  
 [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) for simple color code highlighting  
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) standard LSP for Neovim.  
 [nvim-surround](https://github.com/tpope/vim-surround) for better surround features  
@@ -74,24 +44,19 @@ straightforward.
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for highlighting  
 [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) colored icons  
 [packer.nvim](https://github.com/wbthomason/packer.nvim) Main plugin to handle plugins  
-[telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) may not need  
+[plenary.nvim](https://github.com/nvim-lua/plenary.nvim) helper functions for lua  
+[popup.nvim](https://github.com/nvim-lua/popup.nvim) popup API plugin for neovim  
+[telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) fzy native for telescope  
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
+[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) theme I'm using  
 [trouble.nvim](https://github.com/folke/trouble.nvim) awesome plugin for displaying troublesome things, with native LSP integration and telescope integration  
 [vim-fugitive](https://github.com/tpope/vim-fugitive) for easy git commands  
-[zephyr-nvim](https://github.com/glepnir/zephyr-nvim) for color scheme  
 
-### How To Install Other Plugins
+### The Config Folder
 
-Plugin is slightly different from direct Packer usage. See: `require('core.pack').register_plugin`. 
-Pass the plugin you want into this function. Setup examples are in `modules/your-folder-name/plugins.lua`.
-
-```
-local plugin = require('core.pack').register_plugin
-local conf = require('modules.ui.config')
-
-plugin {'glepnir/zephyr-nvim', config = conf.zephyr}
-plugin {'plugin github <repo_name>'}
-```
+The main config folder is `lua/me/config`. This is where all of the setup functions exist. I package them up via `init.lua`
+so that I can just require `me` and get all of the setup functions. This is a nice way to keep things organized.
+ They are split up by plugin, so you can easily find the setup function for a specific plugin. 
 
  What is the config parameter? This is used in [packer.nvim](https://github.com/wbthomason/packer.nvim). 
 You may need to check the documentation of Packer to know how to use it. If your plugin file gets 
@@ -105,22 +70,11 @@ NOTE: Not using the default path configuration in Packer. It currently uses the 
 compiled file path to `~/.local/share/nvim/site/lua`. Use `:h autocmd` to learn more about it. When you edit the config and open Neovim, 
 you'll notice that it doesn't take effect. Use PackerCompile to generate a new  compile file with your changes. 
 
- ### How To Configure Keymap 
+### How To Configure Keymaps
 
 These are setup in the standard neovim way. See the keymap folder for details.
 There are some small wrappers to make the syntax a little nicer, but they're
 unecessary.
-
-# Miscellaneous
-
-## Your Dashboard Header
-The configuration for this is in `lua/modules/ui/config.lua`. I would recommend looking 
-through this if you'd like to configure this startup page. I commonly put bindings I don't remember 
-or commands I find useful for admin work here.
-
-You can specify a file instead of inlining it in the configuration file. This does not work properly 
-on Windows systems as far as I know, but if you'd like to RGB your header, see the documentation for 
-`dashboard.nvim` and the section below.
 
 ## About ? Appearing In Neovim
 
