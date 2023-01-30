@@ -84,3 +84,13 @@ Here's a github URL: `https://github.com/ryanoasis/nerd-fonts/tree/master/patche
 
 NOTE: If you're using Windows, you'll want to use a fixed-width font, or you
 won't be able to use it in Powershell/Terminal.
+
+### Fzf Dependency
+
+This uses fzf for fuzzy finding. You'll need to install it. It's included in most OS package managers. Without it, you won't be able 
+to use Telescope's live grep, or any of the other fzf features.
+
+### LSP
+
+Mason doesn't set up every LSP for you. If you're using a language server that requires a global install, you'll need to install it yourself.
+If you run into an LSP that isn't working, check the language server's documentation, and also use :LspInfo to see if it's running.
