@@ -1,13 +1,10 @@
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/11034778/201424828-95bd7cc5-9cd5-40f5-aa41-8cc8923ee6e0.png" alt="screenshot"/>
+  <img src="https://user-images.githubusercontent.com/11034778/215368402-c2a76b55-6ae2-448d-87ff-d49ef3a77f97.png" alt="screenshot"/>
 </h1>
-
-Install ripgrep
 
 ## What Is This?
 
 This is my person neovim configuration. It used to be based on Glepnir's configuration, but I've since rewritten it from scratch.
-
 
 ## Structure
 ```
