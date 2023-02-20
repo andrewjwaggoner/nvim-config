@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
   use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons', config = settings.trouble.config }
   use { 'rhysd/git-messenger.vim' }
   use { 'tpope/vim-fugitive' }
+  use { 'untitled-ai/jupyter_ascending.vim', config=settings.jupyter_ascending.config }
   use {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config },

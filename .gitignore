@@ -1,5 +1,4 @@
-static/hello_andrew.cat
-.lsp/
 .clj-kondo
 .session
 plugin/packer_compiled.lua
+**/.DS_Store
