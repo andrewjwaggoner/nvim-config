@@ -23,6 +23,14 @@ end, {
   desc = 'Change line to have upper casing',
 })
 
+vim.api.nvim_create_user_command('MathCast', function()
+  vim.cmd('s/\\<./\\u&/g')
+  vim.cmd('noh')
+end, {
+  nargs = 0,
+  desc = 'Convert math words to symbols',
+})
+
 vim.api.nvim_create_user_command('GitCommit', function()
   vim.cmd('Git commit -a')
 end, {
@@ -38,7 +46,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command('JupyterLaunch', function()
-  vim.cmd('!jupyter notebook ' .. vim.fn.bufname() .. ' &> /dev/null &')
+  vim.cmd('!jupyter notebook ' .. vim.fn.bufname() .. ' &')
   print("Use # %% to separate cells, # %% [markdown] for markdown cells")
 end, {
   nargs = 0,
