@@ -1,3 +1,16 @@
+-- Helper methods to parse parameters
+function extract_words(str)
+  local words = {}
+  for word in string.gmatch(str, "%S+") do
+    table.insert(words, word)
+  end
+  return words
+end
+
+function starts_with(str, prefix)
+  return string.sub(str, 1, string.len(prefix)) == prefix
+end
+
 -- custom commands for easy casing functions
 vim.api.nvim_create_user_command('TitleCase', function()
   vim.cmd('s/\\<./\\u&/g')
@@ -31,33 +44,27 @@ end, {
   desc = 'Convert math words to symbols',
 })
 
-vim.api.nvim_create_user_command('GitCommit', function()
-  vim.cmd('Git commit -a')
+vim.api.nvim_create_user_command('Jupyter', function(opts)
+  local words = extract_words(opts.args)
+  mode = words[1]
+
+  if mode == nil then
+    vim.cmd('!jupyter-svc on ' .. vim.fn.bufname())
+    print("Use # %% to separate cells, # %% [markdown] for markdown cells")
+    return
+  else 
+    vim.cmd('!jupyter-svc ' .. opts.args)
+  end
 end, {
-  nargs = 0,
-  desc = 'Change line to have upper casing',
+  nargs = '*',
+  desc = 'Control jupyter notebook of current buffer',
 })
 
-vim.api.nvim_create_user_command('JupyterSync', function(table)
-  vim.cmd('!python -m jupyter_ascending.scripts.make_pair --base ' .. table.args)
+vim.api.nvim_create_user_command('LabelStudio', function(opts)
+  vim.cmd('!label-studio ' .. opts)
 end, {
-  nargs = 1,
-  desc = 'Sync jupyter notebook with python file',
-})
-
-vim.api.nvim_create_user_command('JupyterLaunch', function()
-  vim.cmd('!jupyter notebook ' .. vim.fn.bufname() .. ' &')
-  print("Use # %% to separate cells, # %% [markdown] for markdown cells")
-end, {
-  nargs = 0,
-  desc = 'Launch jupyter notebook of current buffer',
-})
-
-vim.api.nvim_create_user_command('JupyterKill', function()
-  vim.cmd('!kill $(pgrep -f jupyter)')
-end, {
-  nargs = 0,
-  desc = 'Kill all jupyter notebooks',
+  nargs = '+',
+  desc = 'Turn on label studio',
 })
 
 vim.api.nvim_create_user_command('Redir', function(ctx)
