@@ -1,14 +1,10 @@
 --- Helper methods to parse parameters
-function extract_words(str)
+function Extract_words(str)
   local words = {}
   for word in string.gmatch(str, "%S+") do
     table.insert(words, word)
   end
   return words
-end
-
-function starts_with(str, prefix)
-  return string.sub(str, 1, string.len(prefix)) == prefix
 end
 
 -- custom commands for easy casing functions
@@ -45,14 +41,14 @@ end, {
 })
 
 vim.api.nvim_create_user_command('Jupyter', function(opts)
-  local words = extract_words(opts.args)
-  mode = words[1]
+  local words = Extract_words(opts.args)
+  local mode = words[1]
 
   if mode == nil then
     vim.cmd('!jupyter-svc on ' .. vim.fn.bufname())
     print("Use # %% to separate cells, # %% [markdown] for markdown cells")
     return
-  else 
+  else
     vim.cmd('!jupyter-svc ' .. opts.args)
   end
 end, {
@@ -87,7 +83,7 @@ vim.api.nvim_create_user_command('Put', function(cmd)
   vim.fn.setreg('a', updated_content)
   -- Output to buffer
   vim.api.nvim_command('normal! \"ap')
-end, { 
+end, {
   nargs = '*',
   desc = 'Put the output of a command into the current buffer',
 })
