@@ -13,6 +13,7 @@ vim.opt.diffopt           = 'filler,iwhite,internal';
 vim.opt.directory         = cache_dir .. 'swap/';
 vim.opt.expandtab         = true;
 vim.opt.foldlevelstart    = 99;
+vim.opt.formatoptions     = 'rq';
 vim.opt.grepprg           = 'rg --hidden --vimgrep --smart-case --';
 vim.opt.infercase         = true;
 vim.opt.jumpoptions       = 'stack';

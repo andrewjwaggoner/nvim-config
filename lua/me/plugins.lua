@@ -38,8 +38,8 @@ return require('packer').startup(function(use)
   use { 'untitled-ai/jupyter_ascending.vim', config=settings.jupyter_ascending.config }
   use {
     { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config },
     { 'neovim/nvim-lspconfig', config=settings.nvim_lsp.config },
+    { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config },
   }
 
   if packer_bootstrap then
