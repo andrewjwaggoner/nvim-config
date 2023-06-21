@@ -1,0 +1,31 @@
+{
+    "workspace.library": [
+        "/home/andrew/.config/nvim",
+        "/home/andrew/.local/share/nvim/site",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/cabline.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/copilot.vim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/galaxyline.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/git-messenger.vim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/jupyter_ascending.vim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/nvim-surround",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/sessions.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+        "/home/andrew/.local/share/nvim/site/pack/packer/opt/telescope-fzy-native.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/opt/popup.nvim",
+        "/home/andrew/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/share/nvim/runtime/pack/dist/opt/matchit",
+        "${3rd}/luassert/library"
+    ]
+}
