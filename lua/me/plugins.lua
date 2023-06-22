@@ -36,11 +36,8 @@ return require('packer').startup(function(use)
   use { 'rhysd/git-messenger.vim' }
   use { 'tpope/vim-fugitive' }
   use { 'untitled-ai/jupyter_ascending.vim', config=settings.jupyter_ascending.config }
-  use {
-    { 'williamboman/mason.nvim' },
-    { 'neovim/nvim-lspconfig', config=settings.nvim_lsp.config },
-    { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config },
-  }
+  use { 'williamboman/mason.nvim'}
+  use { 'williamboman/mason-lspconfig.nvim', config=settings.mason_lspconfig.config }
 
   if packer_bootstrap then
     require('packer').sync()

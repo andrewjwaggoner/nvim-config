@@ -36,21 +36,19 @@ nvim_lsp.config = function()
     }
   }
 
-  require 'lspconfig'.awk_ls.setup { on_attach = on_attach }
   require 'lspconfig'.bashls.setup { on_attach = on_attach }
   require 'lspconfig'.clangd.setup { on_attach = on_attach }
-  require 'lspconfig'.cmake.setup { on_attach = on_attach }
   require 'lspconfig'.cssls.setup { on_attach = on_attach }
   require 'lspconfig'.dockerls.setup { on_attach = on_attach }
   require 'lspconfig'.jsonls.setup { on_attach = on_attach }
-  require 'lspconfig'.zk.setup { on_attach = on_attach }
-  require 'lspconfig'.csharp_ls.setup { on_attach = on_attach }
+  require 'lspconfig'.omnisharp.setup { on_attach = on_attach }
   require 'lspconfig'.pyright.setup { on_attach = on_attach }
-  require 'lspconfig'.sqlls.setup { on_attach = on_attach }
   require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach }
+  require 'lspconfig'.sqlls.setup { on_attach = on_attach }
   require 'lspconfig'.tsserver.setup { on_attach = on_attach }
   require 'lspconfig'.vimls.setup { on_attach = on_attach }
   require 'lspconfig'.yamlls.setup { on_attach = on_attach }
+  require 'lspconfig'.zk.setup { on_attach = on_attach }
 
 end
 
