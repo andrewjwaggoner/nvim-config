@@ -23,6 +23,13 @@ function c_snippets.init(ls)
   local types = require("luasnip.util.types")
 
   -- CUSTOM SNIPPETS
+  ls.add_snippets('c', {
+    s('main', {
+      t({'int main(int argc, char *argv[]) {', ''}),
+      i(0),
+      t({'', '}', ''}),
+    }),
+  })
 end
 
 return c_snippets

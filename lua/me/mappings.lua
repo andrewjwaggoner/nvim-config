@@ -3,15 +3,15 @@ local ls = require('luasnip')
 
 vim.g.mapleader = ' '
 
-vim.keymap.set("i", "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set("i", "<C-K>", function() ls.expand_or_jump() end, {silent = true})
+vim.keymap.set("i", "<C-H>", function() ls.jump(-1) end, {silent = true})
 vim.keymap.set("i", "<C-L>", function() ls.jump( 1) end, {silent = true})
-vim.keymap.set("i", "<C-J>", function() ls.jump(-1) end, {silent = true})
 vim.keymap.set("i", "<C-E>", function() if ls.choice_active() then ls.change_choice(1) end end, {silent = true})
 
-vim.keymap.set("s", "<C-S-K>", function() ls.expand() end, {silent = true})
-vim.keymap.set("s", "<C-S-L>", function() ls.jump( 1) end, {silent = true})
-vim.keymap.set("s", "<C-S-J>", function() ls.jump(-1) end, {silent = true})
-vim.keymap.set("s", "<C-S-E>", function() if ls.choice_active() then ls.change_choice(1) end end, {silent = true})
+vim.keymap.set("s", "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set("s", "<C-H>", function() ls.jump(-1) end, {silent = true})
+vim.keymap.set("s", "<C-L>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set("s", "<C-E>", function() if ls.choice_active() then ls.change_choice(1) end end, {silent = true})
 
 vim.keymap.set('n', '<Leader><ESC>'    , '<Cmd>qa!<CR>', stdopts)
 vim.keymap.set('n', '<Leader><Leader>c', '<Cmd>source ~/.config/nvim/init.lua<CR>', stdopts)
@@ -55,10 +55,10 @@ vim.keymap.set('n', '<Leader>ss'       , '<Cmd>SessionsSave<CR>', stdopts)
 vim.keymap.set('n', '<Leader>t'        , '<Cmd>NvimTreeToggle<CR>', stdopts)
 vim.keymap.set('n', '<Leader>z'        , '<Cmd>Zeavim<CR>', stdopts)
 
-vim.keymap.set('n', '<c-h>', '<c-w>h', stdopts)
-vim.keymap.set('n', '<c-j>', '<c-w>j', stdopts)
-vim.keymap.set('n', '<c-k>', '<c-w>k', stdopts)
-vim.keymap.set('n', '<c-l>', '<c-w>l', stdopts)
+vim.keymap.set('n', '<C-h>', '<C-w>h', stdopts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', stdopts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', stdopts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', stdopts)
 
 vim.keymap.set('n', 'H', '^', stdopts)
 vim.keymap.set('n', 'J', '5j', stdopts)

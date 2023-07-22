@@ -23,7 +23,40 @@ function py.init(ls)
   local types = require("luasnip.util.types")
 
   -- CUSTOM SNIPPETS
-  --
-end
+  ls.add_snippets('python', {
+    s("def", {
+      t("def "),
+      i(1, "function_name"),t("("),i(2),t(") -> "),i(3, "return_type"),t(":"),
+      i(0),
+    }),
+  })
+
+  ls.add_snippets("python", {
+    s("pysparklibs", {
+      t({"from pyspark.ml.feature import StopWordsRemover, Tokenizer",
+      "from pyspark.ml.feature import CountVectorizer, IDF",
+      "from pyspark.ml.feature import Normalizer",
+      "from pyspark.ml import Pipeline",
+      "from pyspark.sql import SparkSession",
+      "",
+      ""}),
+      t({"# Create a SparkSession", ""}),
+      i(1, "spark"), t({" = SparkSession.builder.getOrCreate()", "", ""}),
+      rep(1), t(".sparkContext.setLogLevel('"), c(2, { t("WARN"), t("ERROR"), t("INFO"), t("DEBUG"),}),t({"')", ""}),
+      i(0),
+    }),
+    s("pysparkread", {
+      t({"# Read a CSV file into a DataFrame",
+      "df_"}), i(1),t({" = spark.read.csv(path='"}),
+      rep(1), t({".csv', header=True, inferSchema=True, escape='\"')", ""}),
+      i(0)
+    }),
+    s("barchart", {
+      t({"import matplotlib.pyplot as "}), i(1), t({"", ""}),
+    }),
+  })
+
+  end
 
 return py
+
