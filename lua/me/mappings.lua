@@ -1,5 +1,4 @@
 local stdopts = { silent = true }
-local ls = require('luasnip')
 
 vim.g.mapleader = ' '
 
