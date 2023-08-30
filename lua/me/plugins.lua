@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
   use { 'KabbAmine/zeavim.vim', config = settings.zeavim.config }
   use { 'kyazdani42/nvim-tree.lua', cmd ='NvimTreeToggle', config = settings.nvim_tree.config, requires='kyazdani42/nvim-web-devicons' }
   use { 'kylechui/nvim-surround', config = settings.nvim_surround.config }
-  -- use { 'L3MON4D3/LuaSnip', tag = "v2.*", config = settings.luasnip.config, run = 'make install_jsregexp' }
+  use { 'L3MON4D3/LuaSnip', tag = "v2.*", config = settings.luasnip.config, run = 'make install_jsregexp' }
   use { 'nvim-colortils/colortils.nvim', cmd = "Colortils", config = settings.colortils.config }
   use { 'natecraddock/sessions.nvim', config = settings.sessions.config }
   use { 'norcalli/nvim-colorizer.lua', config = settings.nvim_colorizer.config }

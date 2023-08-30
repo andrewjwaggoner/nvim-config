@@ -23,8 +23,7 @@ mason_lspconfig.config = function()
       'sqlls',
       'tsserver',
       'vimls',
-      'yamlls',
-      'zk'
+      'yamlls'
     },
   }
 
