@@ -39,6 +39,7 @@ function telescope.config()
     on_attach=on_attach,
   }
   require('telescope').load_extension('fzy_native')
+  require('telescope').load_extension('luasnip')
 end
 
 return telescope

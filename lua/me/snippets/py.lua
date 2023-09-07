@@ -23,7 +23,6 @@ function py.init(ls)
   local t = ls.text_node
   local types = require("luasnip.util.types")
 
-  print("Loading py.lua")
   -- CUSTOM SNIPPETS
   ls.add_snippets('python', {
     s("def", {

@@ -37,16 +37,6 @@ function all.init(ls)
     }),
   })
 
-  -- set type to "autosnippets" for adding autotriggered snippets.
-  ls.add_snippets("all", {
-    s("autotrigger", {
-      t("autosnippet"),
-    }),
-  }, {
-    type = "autosnippets",
-    key = "all_auto",
-  })
-
 end
 
 return all

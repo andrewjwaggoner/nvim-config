@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'nvim-lua/plenary.nvim', opt = true },
     { 'nvim-lua/popup.nvim', opt = true },
+    { "benfowler/telescope-luasnip.nvim", module = "telescope._extensions.luasnip"},  -- if you wish to lazy-load
     { 'nvim-telescope/telescope-fzy-native.nvim', opt = true }}}
   use { 'nvim-treesitter/nvim-treesitter', after = 'telescope.nvim', config = settings.treesitter.config, event='BufRead', run=':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
