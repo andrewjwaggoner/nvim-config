@@ -22,6 +22,7 @@ function md.init(ls)
   local t = ls.text_node
   local types = require("luasnip.util.types")
   local newline = t({"", ""})
+  local indent = t({"    "})
 
   ls.add_snippets('markdown', {
     s({trig="link", dscr="HTML link"}, {
@@ -96,7 +97,6 @@ function md.init(ls)
       })
     end
 
-
     local chart_op = function(idx)
       return c(idx, {
         sn(nil, { t('-- '), i(1, 'text'), t(' ---')}),
@@ -115,10 +115,6 @@ function md.init(ls)
       })
     end
 
-    local indent = function()
-      return t({"    "})
-    end
-
     local chart_direction = function(idx)
       return c(idx, {
         t('LR'), t('TD'), t('BT'), t('RL')
@@ -131,8 +127,14 @@ function md.init(ls)
         t("graph "), chart_direction(1), newline,
         indent(), chart_node(2, 'A'), chart_op(3), chart_node(4, 'B'), newline,
         t({"```", ''}),
-    }),
-  })
+      }),
+    })
+
+    ls.add_snippets('markdown', {
+      s("click", {
+        t('click '), i(1, 'A'), c(2, {t(' href '), t(' call '), t(' callback '), t(' ')}, i(3, 'https://')),
+      }),
+    })
 
 end
 
