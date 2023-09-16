@@ -21,6 +21,7 @@ function md.init(ls)
   local sn = ls.snippet_node
   local t = ls.text_node
   local types = require("luasnip.util.types")
+  local newline = t({"", ""})
 
   ls.add_snippets('markdown', {
     s({trig="link", dscr="HTML link"}, {
@@ -75,15 +76,61 @@ function md.init(ls)
         t("# "), i(1, "header"),
     })})
 
+    local chart_node = function(idx, default_name)
+      if not default_name then
+        default_name = 'A'
+      end
+      return c(idx, {
+        sn(nil, { i(1, default_name), t('('), i(2, 'rounded_square'), t(')') }),
+        sn(nil, { i(1, default_name), t('(('), i(2, 'circle'), t('))') }),
+        sn(nil, { i(1, default_name), t('((('), i(2, 'double_circle'), t(')))') }),
+        sn(nil, { i(1, default_name), t('(['), i(2, 'rounded'), t('])') }),
+        sn(nil, { i(1, default_name), t('[/'), i(2, 'parallel'), t('/]') }),
+        sn(nil, { i(1, default_name), t('[/'), i(2, 'trapezoid'), t('\\]') }),
+        sn(nil, { i(1, default_name), t('>'), i(2, 'asymmetric_circle'), t(']') }),
+        sn(nil, { i(1, default_name), t('['), i(2, 'square'), t(']') }),
+        sn(nil, { i(1, default_name), t('[('), i(2, 'cylinder'), t(')]') }),
+        sn(nil, { i(1, default_name), t('[['), i(2, 'double_rect'), t(']]') }),
+        sn(nil, { i(1, default_name), t('{'), i(2, 'rhombus'), t('}') }),
+        sn(nil, { i(1, default_name), t('{{'), i(2, 'hexagon'), t('}}') }),
+      })
+    end
+
+
+    local chart_op = function(idx)
+      return c(idx, {
+        sn(nil, { t('-- '), i(1, 'text'), t(' ---')}),
+        sn(nil, { t('--->|'), i(1, 'text'), t('|')}),
+        sn(nil, { t('-. '), i(1, 'text'), t(' .->')}),
+        sn(nil, { t('== '), i(1, 'text'), t(' ==>')}),
+        t(' & '),
+        t(' --- '),
+        t('-->'),
+        t('-.- '),
+        t('-.-> '),
+        t('<-->'),
+        t('==>'),
+        t('o--o'),
+        t('x--x'),
+      })
+    end
+
+    local indent = function()
+      return t({"    "})
+    end
+
+    local chart_direction = function(idx)
+      return c(idx, {
+        t('LR'), t('TD'), t('BT'), t('RL')
+      })
+    end
+
     ls.add_snippets('markdown', {
       s("flowchart", {
-        t("```mermaid\n"),
-        t("graph LR\n"),
-        t("    A[Square Rect] -- Link text --> B((Circle))\n"),
-        t("    A --> C(Round Rect)\n"),
-        t("    B --> D{Rhombus}\n"),
-        t("    C --> D\n"),
-        t("```\n"),
+        t({"```mermaid", ''}),
+        t("graph "), chart_direction(1), newline,
+        indent(), chart_node(2, 'A'), chart_op(3), chart_node(4, 'B'), newline,
+        t({"```", ''}),
     }),
   })
 
