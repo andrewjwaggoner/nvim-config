@@ -9,27 +9,28 @@ This is my person neovim configuration. It used to be based on Glepnir's configu
 ## Structure
 ```
 ├── init.lua
+├── lazy-lock.lua              version locks packages, should be in source control
+├── plugin
 ├── lua
-│   └── me
-│      ├── config                 this folder houses all of our setup functions
-│      │   └── ...                each file is a setup function for a specific plugin
-│      ├── init.lua               require file so we can just include `lua.me`
-│      ├── options.lua            vim options
-│      ├── plugins.lua            plugin manager
-│      ├── autocommands.lua       your custom autocommands go here
-│      └── mappings.lua           your keymaps go here
+│   ├── snippets
+│   ├── config                 this folder houses all of our setup functions
+│   ├── options.lua            vim options
+│   ├── plugins.lua            plugin manager
+│   ├── autocommands.lua       your custom autocommands go here
+│   └── mappings.lua           your keymaps go here
 ```
 A nice structure, right? Looks complicated? Obviously, since it's Neovim, you can delete literally
 ANYTHING you'd like! This structure is mostly for organization, and I've tried
 to keep it idiomatic, so looking at other configs and examples should be
-straightforward. There are still a few things I need to setup, like using plugin/after for specific 
-mappings instead of the global mappings.lua file.
+straightforward. 
 
 ### Plugins I'm Using
 
 [cabline.nvim](https://github.com/andrewjwaggoner/cabline.nvim) custom tabline for my own workflow  
 [colortils.nvim](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
 [git-messenger.nvim](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
+[lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager
+[luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  
 [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) for blending mason and lspconfig  
 [mason.nvim](https://github.com/williamboman/mason.nvim) for handling LSP/DAP stuff  
@@ -40,10 +41,10 @@ mappings instead of the global mappings.lua file.
 [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) helper for highlighting  
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for highlighting  
 [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) colored icons  
-[packer.nvim](https://github.com/wbthomason/packer.nvim) Main plugin to handle plugins  
 [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) helper functions for lua  
 [popup.nvim](https://github.com/nvim-lua/popup.nvim) popup API plugin for neovim  
 [telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) fzy native for telescope  
+[telescope-luasnip.nvim](https://github.com/benfowler/telescope-luasnip.nvim) telescope integration for luasnip
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
 [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) theme I'm using  
 [trouble.nvim](https://github.com/folke/trouble.nvim) awesome plugin for displaying troublesome things, with native LSP integration and telescope integration  
@@ -51,21 +52,12 @@ mappings instead of the global mappings.lua file.
 
 ### The Config Folder
 
-The main config folder is `lua/me/config`. This is where all of the setup functions exist. I package them up via `init.lua`
-so that I can just require `me` and get all of the setup functions. This is a nice way to keep things organized.
- They are split up by plugin, so you can easily find the setup function for a specific plugin. 
+The main config folder is `lua/config`. This is where all of the setup functions exist. I package them up via `init.lua`
+so that I can just require `plugins` and get all of the setup functions. This is a nice way to keep things organized.
+They are split up by plugin, so you can easily find the setup function for a specific plugin. 
 
- What is the config parameter? This is used in [packer.nvim](https://github.com/wbthomason/packer.nvim). 
-You may need to check the documentation of Packer to know how to use it. If your plugin file gets 
-complicated you can create another file: `modules/your-folder-name/config.lua` to avoid
-making the plugins.lua file too long. I recommend lazy-loading plugins, although
-NeoVim seems to be quite fast even with many loaded. Check the usage in modules, it will improve your 
-Neovim startup speed. lazy-loading is not magic, it just loads your config into some autocmds, you can check the
-packer_compiled.lua to understand it. 
-
-NOTE: Not using the default path configuration in Packer. It currently uses the plugins folder. So the
-compiled file path to `~/.local/share/nvim/site/lua`. Use `:h autocmd` to learn more about it. When you edit the config and open Neovim, 
-you'll notice that it doesn't take effect. Use PackerCompile to generate a new  compile file with your changes. 
+What is the config parameter? This is used in [Lazy](https://github.com/folke/lazy.nvim).
+You may need to check the documentation of Lazy to know how to use it. 
 
 ### How To Configure Keymaps
 
