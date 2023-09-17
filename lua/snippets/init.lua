@@ -5,11 +5,11 @@ if not success then
 end
 
 local snippets = {}
-snippets.c = require('me.snippets.c')
-snippets.md = require('me.snippets.md')
-snippets.py = require('me.snippets.py')
-snippets.tex = require('me.snippets.tex')
-snippets.all = require('me.snippets.all')
+snippets.c = require('snippets.c')
+snippets.md = require('snippets.md')
+snippets.py = require('snippets.py')
+snippets.tex = require('snippets.tex')
+snippets.all = require('snippets.all')
 
 local function module()
   -- some shorthands...

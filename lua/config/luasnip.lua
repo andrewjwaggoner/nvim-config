@@ -1,6 +1,6 @@
 local config = {}
 
-config.snippets = require("me.snippets")
+config.snippets = require("snippets")
 config.luasnip = function()
 end
 
