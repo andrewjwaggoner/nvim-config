@@ -37,6 +37,7 @@ local function module()
   lsm.newline = lsm.t({"", ""})
   lsm.indent = lsm.t({"  "})
 
+  -- combination of t,i,t nodes
   lsm.tit = function(idx, t1, i1, t2)
     local result = {}
     if t1 ~= nil then
@@ -49,6 +50,13 @@ local function module()
     return lsm.sn(idx, result)
   end
 
+  -- Easy way to get date
+  lsm.date_input = function(_, _, _, fmt)
+      fmt = fmt or "%Y-%m-%d"
+      return lsm.sn(nil, lsm.i(1, os.date(fmt)))
+  end
+
+  -- use this object when wiring up snippets
   return lsm
 end
 
