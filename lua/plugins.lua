@@ -1,4 +1,4 @@
-local settings = require ('config')
+local settings = require('config')
 
 require('lazy').setup({
   { 'wbthomason/packer.nvim' },
@@ -10,7 +10,7 @@ require('lazy').setup({
   { 'KabbAmine/zeavim.vim', config = settings.zeavim.config },
   { 'kyazdani42/nvim-tree.lua', cmd ='NvimTreeToggle', config = settings.nvim_tree.config, dependencies='kyazdani42/nvim-web-devicons' },
   { 'kylechui/nvim-surround', config = settings.nvim_surround.config },
-  { 'L3MON4D3/LuaSnip', config = settings.luasnip.config, build = 'make install_jsregexp' },
+  { 'L3MON4D3/LuaSnip', build = 'make install_jsregexp' },
   { 'nvim-colortils/colortils.nvim', cmd = "Colortils", config = settings.colortils.config },
   { 'natecraddock/sessions.nvim', config = settings.sessions.config },
   { 'norcalli/nvim-colorizer.lua', config = settings.nvim_colorizer.config },
@@ -32,3 +32,5 @@ require('lazy').setup({
   }},
   { 'neovim/nvim-lspconfig', config = settings.nvim_lsp.config },
 })
+
+settings.snippets = require("snippets")

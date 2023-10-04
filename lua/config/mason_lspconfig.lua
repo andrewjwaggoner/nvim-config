@@ -17,6 +17,7 @@ mason_lspconfig.config = function()
       'cssls',
       'dockerls',
       'jsonls',
+      'marksman',
       'omnisharp',
       'pyright',
       'rust_analyzer',

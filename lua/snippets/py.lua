@@ -10,7 +10,7 @@ function py.init(ls,m)
     }),
   })
 
-  ls.add_snippets("python", {
+  ls.add_snippets("py", {
     m.s("pysparklibs", {
       m.t({"from pyspark.ml.feature import StopWordsRemover, Tokenizer",
       "from pyspark.ml.feature import CountVectorizer, IDF",
@@ -32,6 +32,9 @@ function py.init(ls,m)
     }),
     m.s("barchart", {
       m.t({"import matplotlib.pyplot as "}), m.i(1), m.t({"", ""}),
+    }),
+    m.s("#i", {
+      m.t({"# pyright: ignore", ""}),
     }),
   })
 
