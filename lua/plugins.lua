@@ -24,6 +24,7 @@ require('lazy').setup({
   { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
   { 'folke/trouble.nvim', dependencies = 'kyazdani42/nvim-web-devicons', config = settings.trouble.config },
   { 'rhysd/git-messenger.vim' },
+  { 'sindrets/diffview.nvim'},
   { 'tpope/vim-fugitive' },
   { 'untitled-ai/jupyter_ascending.vim', config = settings.jupyter_ascending.config },
   { 'williamboman/mason-lspconfig.nvim', config = settings.mason_lspconfig.config, dependencies = {
