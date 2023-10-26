@@ -4,25 +4,26 @@
 
 ## What Is This?
 
-This is my person neovim configuration. It used to be based on Glepnir's configuration, but I've since rewritten it from scratch.
+This is my person neovim configuration. 
 
 ## Structure
 ```
 ├── init.lua
+├── README.md                  this document
 ├── lazy-lock.lua              version locks packages, should be in source control
-├── plugin
 ├── lua
-│   ├── snippets
+│   ├── snippets               this folder houses all of the snippets for luasnip
+│   │   ├─ ...
 │   ├── config                 this folder houses all of our setup functions
+│   │   ├─ ...
 │   ├── options.lua            vim options
-│   ├── plugins.lua            plugin manager
+│   ├── plugins.lua            plugin manager setup, auto loads config
 │   ├── autocommands.lua       your custom autocommands go here
 │   └── mappings.lua           your keymaps go here
 ```
 A nice structure, right? Looks complicated? Obviously, since it's Neovim, you can delete literally
 ANYTHING you'd like! This structure is mostly for organization, and I've tried
-to keep it idiomatic, so looking at other configs and examples should be
-straightforward. 
+to keep it idiomatic, so looking at other configs and examples should be straightforward. 
 
 ### Plugins I'm Using
 
@@ -38,7 +39,6 @@ straightforward.
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) standard LSP for Neovim.  
 [nvim-surround](https://github.com/tpope/vim-surround) for better surround features  
 [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) for file explorer (requires patched font)  
-[nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) helper for highlighting  
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for highlighting  
 [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) colored icons  
 [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) helper functions for lua  
@@ -52,18 +52,18 @@ straightforward.
 
 ### The Config Folder
 
-The main config folder is `lua/config`. This is where all of the setup functions exist. I package them up via `init.lua`
+The main config folder is `lua/config`. This is where all of the setup functions exist. I package them up automagically via `init.lua`
 so that I can just require `plugins` and get all of the setup functions. This is a nice way to keep things organized.
 They are split up by plugin, so you can easily find the setup function for a specific plugin. 
+
+Each of these modules handle behavior related to the module. For example, `config/telescope.lua` handles all of the setup for telescope, keybinds, etc.
 
 What is the config parameter? This is used in [Lazy](https://github.com/folke/lazy.nvim).
 You may need to check the documentation of Lazy to know how to use it. 
 
 ### How To Configure Keymaps
 
-These are setup in the standard neovim way. See the keymap folder for details.
-There are some small wrappers to make the syntax a little nicer, but they're
-unecessary.
+These are setup in the standard neovim way. See mappings.lua for an example. Plugin specific keymaps are setup in the plugin's config file.
 
 ## About ? Appearing In Neovim
 

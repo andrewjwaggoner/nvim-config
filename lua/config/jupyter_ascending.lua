@@ -8,7 +8,10 @@
 -- python -m jupyter_ascending.scripts.make_pair --base <name>
 
 vim.api.nvim_create_user_command('Jupyter', function(opts)
-  local words = Extract_words(opts.args)
+  local words = {}
+  for word in string.gmatch(opts.args, "%S+") do
+    table.insert(words, word)
+  end
   local mode = words[1]
 
   if mode == nil then

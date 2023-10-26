@@ -1,10 +1,18 @@
-local tokyonight = { package_name = 'folke/tokyonight.nvim' }
+local tokyonight = { package_name = 'folke/tokyonight.nvim', themes = { 'tokyonight-storm', 'tokyonight-moon', 'tokyonight-night', 'tokyonight-day' }}
 
 function tokyonight.config()
-  vim.cmd('colorscheme tokyonight')
+  require('tokyonight').setup {}
+
+  vim.g.themes = tokyonight.themes
+  vim.g.tokyonight_style = "tokyonight-moon"
+  vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
 end
 function tokyonight.lazy()
-  return {tokyonight.package_name, config = tokyonight.config, lazy = false, priority = 1000 }
+  return {
+    tokyonight.package_name, 
+    config = tokyonight.config, 
+    lazy = false, 
+    priority = 1000 }
 end
 
 return tokyonight

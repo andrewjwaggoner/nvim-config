@@ -1,6 +1,27 @@
-vim.api.nvim_create_user_command('Case', function()
+function get_index(key, themes)
+  for i, v in ipairs(themes) do
+    if v == key then
+      return i
+    end
+  end
+  return 0
+end
+
+vim.api.nvim_create_user_command('ColorschemeNext', function()
+  local current_index = get_index(vim.g.current_style, vim.g.themes)
+  local new_index = (current_index % #vim.g.themes) + 1
+  local new_theme = vim.g.themes[new_index]
+  vim.g.current_style = new_theme
+  vim.cmd('colorscheme ' .. new_theme)
+end, {
+  nargs = '*',
+  desc = 'Moves to the next colorscheme we have',
+})
+
+
+vim.api.nvim_create_user_command('Case', function(opts)
   local words = {}
-  for word in string.gmatch(str, "%S+") do
+  for word in string.gmatch(opts.args, "%S+") do
     table.insert(words, word)
   end
 
@@ -16,7 +37,6 @@ vim.api.nvim_create_user_command('Case', function()
   else
     print('Invalid mode')
   end
-
 end, {
   nargs = 1,
   desc = 'Change line to have a certain casing',
