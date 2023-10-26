@@ -1,4 +1,6 @@
 local nvim_tree = { package_name = 'kyazdani42/nvim-tree.lua' }
+vim.keymap.set('n', '<Leader>t', '<Cmd>NvimTreeToggle<CR>', { silent = true })
+
 --
 -- This function has been generated from your
 --   view.mappings.list
@@ -98,6 +100,6 @@ function nvim_tree.config()
 end
 
 function nvim_tree.lazy()
-  return { nvim_tree.package_name, cmd ='NvimTreeToggle', lazy, true, config = nvim_tree.config, dependencies='kyazdani42/nvim-web-devicons' }
+  return { nvim_tree.package_name, cmd ='NvimTreeToggle', lazy = false, config = nvim_tree.config, dependencies='kyazdani42/nvim-web-devicons' }
 end
 return nvim_tree

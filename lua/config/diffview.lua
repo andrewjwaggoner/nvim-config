@@ -7,9 +7,8 @@ function diffview.lazy()
   return {
     'sindrets/diffview.nvim',
     config = diffview.config,
-    cmd = "DiffView",
-    lazy = true,
-  }
+    cmd = "DiffviewOpen",
+    lazy = true }
 end
 
 return diffview

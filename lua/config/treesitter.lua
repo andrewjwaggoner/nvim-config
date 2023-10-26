@@ -23,7 +23,6 @@ function treesitter.config()
     },
   }
 end
-
 function treesitter.lazy()
   return {
     'nvim-treesitter/nvim-treesitter',

@@ -7,8 +7,7 @@ function nvim_surround.lazy()
   return {
     nvim_surround.package_name,
     config = nvim_surround.config,
-    lazy = true,
-  }
+    lazy = false }
 end
 
 return nvim_surround

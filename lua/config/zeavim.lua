@@ -1,4 +1,5 @@
 local zeavim = { package_name = 'KabbAmine/zeavim.vim' }
+vim.keymap.set('n', '<Leader>z', '<Cmd>Zeavim<CR>', { silent = true })
 
 function zeavim.config()
   vim.g.zv_file_types = {
@@ -9,9 +10,12 @@ function zeavim.config()
     ['\\v^(md|mdown|mkd|mkdn)$'] = 'markdown',
   }
 end
-
 function zeavim.lazy()
-  return { zeavim.package_name, lazy=true, config = zeavim.config }
+  return { 
+    zeavim.package_name, 
+    lazy = true, 
+    cmd = 'Zeavim',
+    config = zeavim.config }
 end
 
 return zeavim

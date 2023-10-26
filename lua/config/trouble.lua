@@ -1,4 +1,5 @@
 local trouble = {}
+vim.keymap.set('n', '<Leader>r', '<Cmd>TroubleToggle<CR>', { silent = true })
 
 function trouble.config()
   require("trouble").setup {
@@ -6,7 +7,6 @@ function trouble.config()
   auto_close = true,
   }
 end
-
 function trouble.lazy()
   return { 
     'folke/trouble.nvim',

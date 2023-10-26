@@ -11,7 +11,6 @@ mason.config = function()
       }
     }
 end
-
 mason.lspconfig = function()
   require("mason").setup {
     ui = {
@@ -41,11 +40,14 @@ mason.lspconfig = function()
   }
 
 end
-
 mason.lazy = function()
   return { 
-    'williamboman/mason-lspconfig.nvim', cmd = "Mason", lazy = true, config = mason.lspconfig, dependencies = {
-       { 'williamboman/mason.nvim', lazy = true, config = mason.config},
+    'williamboman/mason-lspconfig.nvim', 
+    cmd = "Mason", 
+    lazy = true, 
+    config = mason.lspconfig, 
+    dependencies = {
+      { 'williamboman/mason.nvim', lazy = true, config = mason.config}
     }
   }
 end

@@ -1,59 +1,25 @@
---- Helper methods to parse parameters
-function Extract_words(str)
+vim.api.nvim_create_user_command('Case', function()
   local words = {}
   for word in string.gmatch(str, "%S+") do
     table.insert(words, word)
   end
-  return words
-end
 
--- custom commands for easy casing functions
-vim.api.nvim_create_user_command('TitleCase', function()
-  vim.cmd('s/\\<./\\u&/g')
-  vim.cmd('noh')
-end, {
-  nargs = 0,
-  desc = 'Change line to have title casing',
-})
-
-vim.api.nvim_create_user_command('LowerCase', function()
-  vim.cmd('s/\\<.*/\\L&/g')
-  vim.cmd('noh')
-end, {
-  nargs = 0,
-  desc = 'Change line to have lower casing',
-})
-
-vim.api.nvim_create_user_command('UpperCase', function()
-  vim.cmd('s/\\<.*/\\U&/g')
-  vim.cmd('noh')
-end, {
-  nargs = 0,
-  desc = 'Change line to have upper casing',
-})
-
-vim.api.nvim_create_user_command('MathCast', function()
-  vim.cmd('s/\\<./\\u&/g')
-  vim.cmd('noh')
-end, {
-  nargs = 0,
-  desc = 'Convert math words to symbols',
-})
-
-vim.api.nvim_create_user_command('Jupyter', function(opts)
-  local words = Extract_words(opts.args)
   local mode = words[1]
-
-  if mode == nil then
-    vim.cmd('!jupyter-svc on ' .. vim.fn.bufname())
-    print("Use # %% to separate cells, # %% [markdown] for markdown cells")
-    return
+  if mode == 'title' then
+    vim.cmd('s/\\<./\\u&/g')
+  elseif mode == 'lower' then
+    vim.cmd('s/\\<.*/\\L&/g')
+  elseif mode == 'upper' then
+    vim.cmd('s/\\<.*/\\U&/g')
+  elseif mode == 'math' then
+    vim.cmd('s/\\<./\\u&/g')
   else
-    vim.cmd('!jupyter-svc ' .. opts.args)
+    print('Invalid mode')
   end
+
 end, {
-  nargs = '*',
-  desc = 'Control jupyter notebook of current buffer',
+  nargs = 1,
+  desc = 'Change line to have a certain casing',
 })
 
 vim.api.nvim_create_user_command('LabelStudio', function(opts)
