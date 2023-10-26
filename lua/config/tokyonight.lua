@@ -7,6 +7,11 @@ function tokyonight.config()
   vim.g.tokyonight_style = "tokyonight-moon"
   vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
 end
+
+function tokyonight.is_active_theme()
+  return vim.g.tokyonight_style == vim.g.current_style
+end
+
 function tokyonight.lazy()
   return {
     tokyonight.package_name, 

@@ -18,7 +18,6 @@ end, {
   desc = 'Moves to the next colorscheme we have',
 })
 
-
 vim.api.nvim_create_user_command('Case', function(opts)
   local words = {}
   for word in string.gmatch(opts.args, "%S+") do
