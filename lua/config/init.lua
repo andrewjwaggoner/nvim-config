@@ -1,23 +1,50 @@
 local plugins = {}
 
-plugins.cabline = require('config.cabline')
-plugins.colortils = require('config.colortils')
-plugins.dashboard = require('config.dashboard')
-plugins.galaxyline = require('config.galaxyline')
-plugins.jupyter_ascending = require('config.jupyter_ascending')
-plugins.luasnip = require('config.luasnip')
-plugins.markdown_preview = require('config.markdown_preview')
-plugins.mason = require('config.mason')
-plugins.mason_lspconfig = require('config.mason_lspconfig')
-plugins.nvim_colorizer = require('config.nvim_colorizer')
-plugins.nvim_lsp = require('config.nvim_lsp')
-plugins.nvim_surround = require('config.nvim_surround')
-plugins.nvim_tree = require('config.nvim_tree')
-plugins.sessions = require('config.sessions')
-plugins.telescope = require('config.telescope')
-plugins.tokyonight = require('config.tokyonight')
-plugins.treesitter = require('config.treesitter')
-plugins.trouble = require('config.trouble')
-plugins.zeavim = require('config.zeavim')
+local function is_windows()
+  return package.config:sub(1, 1) == '\\'
+end
+
+local function get_api_directory_call()
+  if is_windows() then
+    return "dir /B "
+  end
+  return "ls " 
+end
+
+local function get_current_file_path()
+  local str = debug.getinfo(2, "S").source:sub(2)
+  local match = str:match("(.*[/\\])")
+  if is_windows() then
+    match = string.gsub(match, "/", "\\")
+  end
+  return match
+end
+
+local function getLuaFiles(nvim_directory)
+  local luaFiles = {}
+  local cmd = get_api_directory_call() .. nvim_directory .. '*.lua'
+  local success, pipe = pcall(io.popen, cmd, 'r')
+
+  if success then
+    for line in pipe:lines() do
+      if line ~= 'init.lua' and line ~= nil then
+        table.insert(luaFiles, line)
+      end
+    end
+    pipe:close()
+  else
+  end
+  return luaFiles
+end
+
+-- Load modules based on file names
+local luaFiles = getLuaFiles(get_current_file_path())
+
+for _, filename in ipairs(luaFiles) do
+    local moduleName = filename:match("(.+)%..+")
+    if moduleName then
+        plugins[moduleName] = require('config/'.. moduleName)
+    end
+end
 
 return plugins

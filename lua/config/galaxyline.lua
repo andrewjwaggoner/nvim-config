@@ -5,12 +5,12 @@ function galaxyline.config()
   if not status_ok then
     return
   end
-  
+
   local colors = require('galaxyline.theme').default
   local condition = require('galaxyline.condition')
   local gls = gl.section
   gl.short_line_list = { 'NvimTree', 'vista', 'dbui', 'packer' }
-  
+
   gls.left[1] = {
     RainbowRed = {
       provider = function()
@@ -19,7 +19,7 @@ function galaxyline.config()
       highlight = { colors.blue, colors.bg },
     },
   }
-  
+
   gls.left[2] = {
     ViMode = {
       provider = function()
@@ -51,7 +51,7 @@ function galaxyline.config()
       end,
     },
   }
-  
+
   gls.left[3] = {
     FileSize = {
       condition = condition.buffer_not_empty,
@@ -59,7 +59,7 @@ function galaxyline.config()
       provider = 'FileSize',
     },
   }
-  
+
   gls.left[4] = {
     FileIcon = {
       condition = condition.buffer_not_empty,
@@ -67,7 +67,7 @@ function galaxyline.config()
       provider = 'FileIcon',
     },
   }
-  
+
   gls.left[5] = {
     FileName = {
       condition = condition.buffer_not_empty,
@@ -75,7 +75,7 @@ function galaxyline.config()
       provider = 'FileName',
     },
   }
-  
+
   gls.left[6] = {
     LineInfo = {
       highlight = { colors.fg, colors.bg },
@@ -84,7 +84,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.left[7] = {
     PerCent = {
       highlight = { colors.fg, colors.bg, 'bold' },
@@ -93,7 +93,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.left[8] = {
     DiagnosticError = {
       highlight = { colors.red, colors.bg },
@@ -101,7 +101,7 @@ function galaxyline.config()
       provider = 'DiagnosticError',
     },
   }
-  
+
   gls.left[9] = {
     DiagnosticWarn = {
       highlight = { colors.yellow, colors.bg },
@@ -109,7 +109,7 @@ function galaxyline.config()
       provider = 'DiagnosticWarn',
     },
   }
-  
+
   gls.left[10] = {
     DiagnosticHint = {
       highlight = { colors.cyan, colors.bg },
@@ -117,7 +117,7 @@ function galaxyline.config()
       provider = 'DiagnosticHint',
     },
   }
-  
+
   gls.left[11] = {
     DiagnosticInfo = {
       highlight = { colors.blue, colors.bg },
@@ -125,7 +125,7 @@ function galaxyline.config()
       provider = 'DiagnosticInfo',
     },
   }
-  
+
   gls.mid[1] = {
     ShowLspClient = {
       condition = function()
@@ -140,7 +140,7 @@ function galaxyline.config()
       provider = 'GetLspClient',
     },
   }
-  
+
   gls.right[1] = {
     FileEncode = {
       condition = condition.hide_in_width,
@@ -150,7 +150,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.right[2] = {
     FileFormat = {
       condition = condition.hide_in_width,
@@ -160,7 +160,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.right[3] = {
     GitIcon = {
       provider = function()
@@ -172,7 +172,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.right[4] = {
     GitBranch = {
       condition = condition.check_git_workspace,
@@ -180,7 +180,7 @@ function galaxyline.config()
       provider = 'GitBranch',
     },
   }
-  
+
   gls.right[5] = {
     Separator = {
       provider = function()
@@ -188,7 +188,7 @@ function galaxyline.config()
       end,
     },
   }
-  
+
   gls.right[6] = {
     DiffAdd = {
       condition = condition.hide_in_width,
@@ -197,7 +197,7 @@ function galaxyline.config()
       provider = 'DiffAdd',
     },
   }
-  
+
   gls.right[7] = {
     DiffModified = {
       condition = condition.hide_in_width,
@@ -206,7 +206,7 @@ function galaxyline.config()
       provider = 'DiffModified',
     },
   }
-  
+
   gls.right[8] = {
     DiffRemove = {
       condition = condition.hide_in_width,
@@ -215,7 +215,7 @@ function galaxyline.config()
       provider = 'DiffRemove',
     },
   }
-  
+
   gls.right[9] = {
     RainbowBlue = {
       provider = function()
@@ -224,7 +224,7 @@ function galaxyline.config()
       highlight = { colors.blue, colors.bg },
     },
   }
-  
+
   gls.short_line_left[1] = {
     BufferType = {
       highlight = { colors.blue, colors.bg, 'bold' },
@@ -233,7 +233,7 @@ function galaxyline.config()
       separator_highlight = { 'NONE', colors.bg },
     },
   }
-  
+
   gls.short_line_left[2] = {
     SFileName = {
       condition = condition.buffer_not_empty,
@@ -241,7 +241,7 @@ function galaxyline.config()
       provider = 'SFileName',
     },
   }
-  
+
   gls.short_line_right[1] = {
     BufferIcon = {
       highlight = { colors.fg, colors.bg },
@@ -250,5 +250,14 @@ function galaxyline.config()
   }
 
 end
-  
+
+function galaxyline.lazy()
+  return { 
+    'glepnir/galaxyline.nvim',
+    galaxyline.package_name, 
+    config = galaxyline.config, 
+    dependencies='kyazdani42/nvim-web-devicons'
+  }
+end
+
 return galaxyline

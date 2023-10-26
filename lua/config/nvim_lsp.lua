@@ -52,4 +52,9 @@ nvim_lsp.config = function()
 
 end
 
+nvim_lsp.lazy = function()
+  return { 
+    'neovim/nvim-lspconfig', lazy = true, config = nvim_lsp.config
+  }
+end
 return nvim_lsp

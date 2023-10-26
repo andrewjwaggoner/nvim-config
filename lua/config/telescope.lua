@@ -36,4 +36,13 @@ function telescope.config()
   require('telescope').load_extension('luasnip')
 end
 
+function telescope.lazy()
+return { 'nvim-telescope/telescope.nvim', lazy = true, cmd = 'Telescope', config = telescope.config, dependencies = {
+       { 'nvim-telescope/telescope-file-browser.nvim' },
+       { 'nvim-lua/plenary.nvim'},
+       { 'nvim-lua/popup.nvim'},
+       { "benfowler/telescope-luasnip.nvim"},
+       { 'nvim-telescope/telescope-fzy-native.nvim'}}}
+end
+
 return telescope

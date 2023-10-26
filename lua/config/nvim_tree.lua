@@ -1,4 +1,4 @@
-local nvim_tree = {}
+local nvim_tree = { package_name = 'kyazdani42/nvim-tree.lua' }
 --
 -- This function has been generated from your
 --   view.mappings.list
@@ -97,4 +97,7 @@ function nvim_tree.config()
   })
 end
 
+function nvim_tree.lazy()
+  return { nvim_tree.package_name, cmd ='NvimTreeToggle', lazy, true, config = nvim_tree.config, dependencies='kyazdani42/nvim-web-devicons' }
+end
 return nvim_tree

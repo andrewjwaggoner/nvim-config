@@ -11,4 +11,14 @@ local jupyter_ascending = {}
 function jupyter_ascending.config()
 end
 
+function jupyter_ascending.lazy()
+  return {
+    'untitled-ai/jupyter_ascending.vim',
+    jupyter_ascending.package_name,
+    lazy = true,
+    config = jupyter_ascending.config
+  }
+
+end
+
 return jupyter_ascending

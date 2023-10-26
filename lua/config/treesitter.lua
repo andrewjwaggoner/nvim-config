@@ -24,4 +24,13 @@ function treesitter.config()
   }
 end
 
+function treesitter.lazy()
+  return {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = true,
+    config = treesitter.config,
+    event='BufRead', build=':TSUpdate' 
+  }
+end
+
 return treesitter

@@ -7,4 +7,12 @@ function sessions.config()
  })
 end
 
+function sessions.lazy()
+ return {
+   'natecraddock/sessions.nvim',
+   config = sessions.config,
+   lazy = true,
+   cmd = {'SessionsSave', 'SessionsLoad'}
+ }
+end
 return sessions

@@ -7,4 +7,13 @@ function trouble.config()
   }
 end
 
+function trouble.lazy()
+  return { 
+    'folke/trouble.nvim',
+    lazy = true,
+    dependencies = 'kyazdani42/nvim-web-devicons',
+    cmd="TroubleToggle",
+    config = trouble.config }
+end
+
 return trouble
