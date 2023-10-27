@@ -6,9 +6,9 @@ end
 
 local function get_directory_command()
   if is_windows() then
-    return "where " .. vim.fn.getcwd() .. ':*.lua'
+    return "where " .. vim.fn.stdpath('config') .. '/lua/config:*.lua'
   end
-  return "ls "  .. vim.fn.getcwd()
+  return 'find ' .. vim.fn.stdpath('config') .. '/lua/config/ -type f'
 end
 
 local function get_config_files()
