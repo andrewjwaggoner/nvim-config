@@ -4,7 +4,7 @@ function tokyonight.config()
   require('tokyonight').setup {}
 
   vim.g.themes = tokyonight.themes
-  vim.g.tokyonight_style = "tokyonight-moon"
+  vim.g.tokyonight_style = 'tokyonight-moon'
   vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
 end
 

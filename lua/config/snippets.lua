@@ -1,5 +1,5 @@
 local snippets = {}
-vim.keymap.set('n', '<Leader><Leader>s', '<Cmd>source ~/.config/nvim/lua/me/config/snippets.lua<CR>', { silent = true })
+vim.keymap.set('n', '<Leader><Leader>s', '<Cmd>source ~/.config/nvim/lua/config/snippets.lua<CR>', { silent = true })
 vim.keymap.set("i", "<C-K>", function() require("luasnip").expand_or_jump() end, {silent = true})
 vim.keymap.set("i", "<C-H>", function() require("luasnip").jump(-1) end, {silent = true})
 vim.keymap.set("i", "<C-L>", function() require("luasnip").jump( 1) end, {silent = true})
