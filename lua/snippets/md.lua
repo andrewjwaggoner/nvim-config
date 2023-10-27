@@ -40,8 +40,8 @@ function md.init(ls, m)
     })
   end
 
-  local chart_direction = function(idx)
-    return m.c(idx, {
+  local chart_direction = function()
+    return m.c(1, {
       m.t('LR'), m.t('TD'), m.t('BT'), m.t('RL')
     })
   end
@@ -101,8 +101,8 @@ ls.add_snippets("markdown", {
   ls.add_snippets('markdown', {
     m.s("flowchart", {
       m.t({"```mermaid", ''}),
-      m.t("graph "), chart_direction(1), m.newline,
-      m.indent, chart_node(2, 'A'), chart_op(3), chart_node(4, 'B'), m.newline,
+      --m.t("graph "), chart_direction(), m.newline,
+      --m.indent, chart_node(2, 'A'), chart_op(3), chart_node(4, 'B'), m.newline,
       m.t({"```", ''}),
     }),
   })

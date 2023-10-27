@@ -41,9 +41,9 @@ end
 local luaFiles = getLuaFiles(get_current_file_path())
 
 for _, filename in ipairs(luaFiles) do
-    local moduleName = filename:match("(.+)%..+")
-    if moduleName then
-        plugins[moduleName] = require('config/'.. moduleName)
+    local moduleName = filename:match(".*(config[/\\].+)%..+")
+    if moduleName and moduleName ~= 'config/init' then
+        plugins[moduleName] = require(moduleName)
     end
 end
 
