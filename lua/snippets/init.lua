@@ -60,9 +60,11 @@ local function module()
   return lsm
 end
 
-snippets.c.init(ls, module())
-snippets.md.init(ls, module())
-snippets.py.init(ls, module())
-snippets.tex.init(ls, module())
+local m = module()
+ls.snippsets = {}
+snippets.c.init(ls, m) 
+snippets.md.init(ls, m)
+snippets.py.init(ls, m)
+snippets.tex.init(ls, m)
 
 return snippets
