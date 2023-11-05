@@ -8,6 +8,9 @@ function md.init(ls, m)
   local s = m.s
   local sn = m.sn
   local tit = m.tit
+  local newline = m.newline
+  local indent = m.indent
+  --local recs = m.recs
 
   -- Helper methods to construct markdown items
   local chart_node = function(idx, name)
@@ -19,7 +22,7 @@ function md.init(ls, m)
         sn(nil, tit(1, '([', 'rounded', '])')),
         sn(nil, tit(1, '>', 'asym_circle', ']')),
         sn(nil, tit(1, '[', 'square', ']')),
-        sn(nil, tit(1, '[((', 'cylinder', '))]')),
+        sn(nil, tit(1, '[(', 'cylinder', ')]')),
         sn(nil, tit(1, '[/', 'parallel', '/]')),
         sn(nil, tit(1, '[/', 'trapezoid', '\\]')),
         sn(nil, tit(1, '[[', 'double_rect', ']]')),
@@ -43,7 +46,7 @@ function md.init(ls, m)
       t('<-->'),
       t('==>'),
       t('o--o'),
-      t('x--x'),
+      t('x--x')
     })
   end
 
@@ -73,20 +76,45 @@ function md.init(ls, m)
             i(1, "text"),
             t({"",""}) }),
           sn(nil, {
-            tit(1,"\t\\item ", "text", nil), newline,
+            tit(1,"\t\\item ", "text", nil), newline(),
             d(2, rec_ls, {}, {user_args = {level+1} })}),
         })
       })
   end
 
-ls.add_snippets("markdown", {
-	-- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
-	-- \item as necessary by utilizing a choiceNode.
-	s("ls", {
-		t({ "\\begin{itemize}", ""}),
-		d(1, rec_ls, {}),
-		t({ "\\end{itemize}", ""}),
-	}),
+  local function recs(snippet_fn)
+    local function recs_fn()
+      return sn(nil, {
+        c(1, {
+          sn(nil, {
+            unpack(snippet_fn()),
+          }),
+          sn(nil, {
+            unpack(snippet_fn()), newline(),
+            d(2, recs(snippet_fn))})
+        })
+      })
+    end
+    return recs_fn
+  end
+
+  local function list_item()
+      return {
+        t("\t\\item "),
+        i(1, "text"),
+        t({"",""})
+      }
+  end
+
+  ls.add_snippets("markdown", {
+  -- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
+  -- \item as necessary by utilizing a choiceNode.
+      s("ls", {
+    t({ "\\begin{itemize}", ""}),
+    --d(1, recs(chart_op() )),
+    d(1, recs(list_item), {}, {}),
+    t({ "\\end{itemize}", ""}),
+  }),
 })
 
   -- CUSTOM SNIPPETS
@@ -106,16 +134,6 @@ ls.add_snippets("markdown", {
   })
 
   ls.add_snippets('markdown', {
-    s("flowchart", {
-      t({"```mermaid", ''}),
-      --t("graph "), chart_direction(1), newline,
-      --indent, chart_node(2, 'A'), chart_op(3), chart_node(4, 'B'), newline,
-      indent, chart_node(nil, 'A'), newline,
-      t({"```", ''}),
-    }),
-  })
-
-  ls.add_snippets('markdown', {
     s("click", {
       tit(1, 'click ', 'A'), click_type(2), tit(3, nil, 'https://', ' _blank'),
     }),
@@ -131,17 +149,30 @@ ls.add_snippets("markdown", {
   })
 
   ls.add_snippets('markdown', {
+    s("flowchart", {
+      t({"```mermaid", ''}),
+       t("graph "), chart_direction(1), newline(), 
+       indent(), 
+       chart_node(2, 'A'), 
+       chart_op(3), 
+       chart_node(4, 'B'), 
+       newline(),
+       t({"```", ''}),
+    }),
+  })
+
+  ls.add_snippets('markdown', {
     s("journey", {
       t({"```mermaid", ''}),
-      t("journey"), newline,
-      indent, tit(1, "title ", "text"), newline,
-      indent, tit(2, "section ", "text"), newline,
+      t("journey"), newline(),
+      indent(), tit(1, "title ", "text"), newline(),
+      indent(), tit(2, "section ", "text"), newline(),
       sn(3, {
-        indent,
+        indent(),
         tit(1, nil, "what", ": "),
         tit(2, nil, "score", ": "),
         i(3,"who"),
-        newline,}),
+        newline()}),
       t({"```", ''}),
     })
   })

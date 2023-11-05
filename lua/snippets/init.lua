@@ -33,10 +33,10 @@ local function module()
   lsm.sn = ls.snippet_node
   lsm.t = ls.text_node
   lsm.types = require("luasnip.util.types")
-  --helpers
-  lsm.newline = lsm.t({"", ""})
-  lsm.indent = lsm.t({"  "})
 
+  --helpers
+  lsm.newline = function() return lsm.t({"", ""}) end
+  lsm.indent = function() return lsm.t("  ") end
   -- combination of t,i,t nodes
   lsm.tit = function(idx, t1, i1, t2)
     local result = {}
@@ -48,6 +48,23 @@ local function module()
         table.insert(result, lsm.t(t2))
     end
     return lsm.sn(idx, result)
+  end
+
+  -- recursive snippet
+  lsm.recs = function(snippet)
+    print(snippet)
+    return snippet
+    --return lsm.sn(nil, {
+    --  lsm.c(1, {
+    --    lsm.sn(nil, {
+    --      snippet_fn(),
+    --      lsm.sn(nil, {
+    --        snippet_fn(), lsm.newline(),
+    --        --d(2, recs, {snippet})
+    --      }),
+    --    })
+    --  })
+    --})
   end
 
   -- Easy way to get date

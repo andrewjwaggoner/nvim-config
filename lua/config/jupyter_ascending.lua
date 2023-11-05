@@ -14,10 +14,15 @@ vim.api.nvim_create_user_command('Jupyter', function(opts)
   end
   local mode = words[1]
 
-  if mode == nil then
+  if mode == nil or mode == 'on' then
     vim.cmd('!jupyter-svc on ' .. vim.fn.bufname())
     print("Use # %% to separate cells, # %% [markdown] for markdown cells")
-    return
+  elseif mode == 'sync' then
+    vim.cmd('!jupyter-svc sync ' .. vim.fn.bufname())
+  elseif mode == 'execute' then
+    vim.cmd('!jupyter-svc cell ' .. vim.fn.bufname() .. ' ' .. vim.fn.line('.'))
+  elseif mode == 'all' then
+    vim.cmd('!jupyter-svc execute "' .. vim.fn.bufname() .. '"')
   else
     vim.cmd('!jupyter-svc ' .. opts.args)
   end
@@ -27,11 +32,12 @@ end, {
 })
 
 local jupyter_ascending = {}
-vim.keymap.set('n', '<Leader>ja', '<Cmd>call jupyter_ascending#execute_all()<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>je', '<Cmd>call jupyter_ascending#execute()<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>ja', '<Cmd>Jupyter all<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>je', '<Cmd>Jupyter execute<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>jk', '<Cmd>Jupyter kill<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>jl', '<Cmd>Jupyter on<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>jr', '<Cmd>call jupyter_ascending#restart()<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>js', '<Cmd>Jupyter sync<CR>', { silent = true })
+
 
 function jupyter_ascending.config()
 end
