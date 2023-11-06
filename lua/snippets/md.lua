@@ -10,7 +10,7 @@ function md.init(ls, m)
   local tit = m.tit
   local newline = m.newline
   local indent = m.indent
-  --local recs = m.recs
+  local recs = m.recs
 
   -- Helper methods to construct markdown items
   local chart_node = function(idx, name)
@@ -60,49 +60,11 @@ function md.init(ls, m)
     return c(idx, {t(' href '), t(' call '), t(' callback '), t(' ')})
   end
 
-  local function rec_ls(_,_,_,level)
-     if level == nil then
-       level = 2
-     end
-
-      if level > 10 then
-        return sn(nil, t(""))
-      end
-
-      return sn(nil, {
-        c(1, {
-          sn(nil, {
-            t("\t\\item "),
-            i(1, "text"),
-            t({"",""}) }),
-          sn(nil, {
-            tit(1,"\t\\item ", "text", nil), newline(),
-            d(2, rec_ls, {}, {user_args = {level+1} })}),
-        })
-      })
-  end
-
-  local function recs(snippet_fn)
-    local function recs_fn()
-      return sn(nil, {
-        c(1, {
-          sn(nil, {
-            unpack(snippet_fn()),
-          }),
-          sn(nil, {
-            unpack(snippet_fn()), newline(),
-            d(2, recs(snippet_fn))})
-        })
-      })
-    end
-    return recs_fn
-  end
-
   local function list_item()
       return {
         t("\t\\item "),
         i(1, "text"),
-        t({"",""})
+        t({""})
       }
   end
 
@@ -111,9 +73,8 @@ function md.init(ls, m)
   -- \item as necessary by utilizing a choiceNode.
       s("ls", {
     t({ "\\begin{itemize}", ""}),
-    --d(1, recs(chart_op() )),
     d(1, recs(list_item), {}, {}),
-    t({ "\\end{itemize}", ""}),
+    t({"", "\\end{itemize}", ""}),
   }),
 })
 

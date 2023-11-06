@@ -4,6 +4,14 @@ if not success then
     return {}
 end
 
+ls.setup({
+  history = true,
+  updateevents = {"TextChanged","TextChangedI"},
+  link_roots = true,
+  keep_roots = true,
+  link_children = true
+})
+
 local snippets = {}
 snippets.c = require('snippets.c')
 snippets.md = require('snippets.md')
@@ -50,21 +58,25 @@ local function module()
     return lsm.sn(idx, result)
   end
 
-  -- recursive snippet
-  lsm.recs = function(snippet)
-    print(snippet)
-    return snippet
-    --return lsm.sn(nil, {
-    --  lsm.c(1, {
-    --    lsm.sn(nil, {
-    --      snippet_fn(),
-    --      lsm.sn(nil, {
-    --        snippet_fn(), lsm.newline(),
-    --        --d(2, recs, {snippet})
-    --      }),
-    --    })
-    --  })
-    --})
+  lsm.recs = function(snippet_fn, level)
+
+    level = (level or 0)
+
+    local function recs_fn()
+     print(level)
+      return lsm.sn(nil, {
+        lsm.sn(nil, {
+          unpack(snippet_fn())
+        }),
+        lsm.c(1, {
+          lsm.t(""),
+          lsm.sn(nil, {
+            lsm.newline(), 
+            lsm.d(1, lsm.recs(snippet_fn, level+1))})
+        })
+      })
+    end
+    return recs_fn
   end
 
   -- Easy way to get date
@@ -78,7 +90,7 @@ local function module()
 end
 
 local m = module()
-ls.snippsets = {}
+ls.snippets = {}
 snippets.c.init(ls, m) 
 snippets.md.init(ls, m)
 snippets.py.init(ls, m)
