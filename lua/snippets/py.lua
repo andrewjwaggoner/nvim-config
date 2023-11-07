@@ -1,40 +1,78 @@
 local py = {}
 
-
 function py.init(ls,m)
+  local t = m.t
+  local i = m.i
+  local c = m.c
+  local d = m.d
+  local s = m.s
+  local sn = m.sn
+  local tit = m.tit
+  local newline = m.newline
+  local indent = m.indent
+  local recs = m.recs
+  local iter = m.iter
+  local rep = m.rep
+
   ls.add_snippets('python', {
-    m.s("def", {
-      m.t("def "),
-      m.i(1, "function_name"),m.t("("),m.i(2),m.t(") -> "),m.i(3, "return_type"),m.t(":"),
-      m.i(0),
+    s("def", {
+      t("def "),
+      i(1, "function_name"),t("("),i(2),t(") -> "),i(3, "return_type"),t(":"), newline(),
+      indent(), i(0),
     }),
   })
 
-  ls.add_snippets("py", {
-    m.s("pysparklibs", {
-      m.t({"from pyspark.ml.feature import StopWordsRemover, Tokenizer",
+  ls.add_snippets("python", {
+    s("pysparklibs", {
+      t({"from pyspark.ml.feature import StopWordsRemover, Tokenizer",
       "from pyspark.ml.feature import CountVectorizer, IDF",
       "from pyspark.ml.feature import Normalizer",
       "from pyspark.ml import Pipeline",
       "from pyspark.sql import SparkSession",
       "",
       ""}),
-      m.t({"# Create a SparkSession", ""}),
-      m.i(1, "spark"), m.t({" = SparkSession.builder.getOrCreate()", "", ""}),
-      m.rep(1), m.t(".sparkContext.setLogLevel('"), m.c(2, { m.t("WARN"), m.t("ERROR"), m.t("INFO"), m.t("DEBUG"),}),m.t({"')", ""}),
-      m.i(0),
+      t({"# Create a SparkSession", ""}),
+      i(1, "spark"), t({" = SparkSession.builder.getOrCreate()", "", ""}),
+      rep(1), t(".sparkContext.setLogLevel('"), c(2, { t("WARN"), t("ERROR"), t("INFO"), t("DEBUG"),}),t({"')", ""}),
+      i(0),
     }),
-    m.s("pysparkread", {
-      m.t({"# Read a CSV file into a DataFrame",
-      "df_"}), m.i(1),m.t({" = spark.read.csv(path='"}),
-      m.rep(1), m.t({".csv', header=True, inferSchema=True, escape='\"')", ""}),
-      m.i(0)
+    s("pysparkread", {
+      t({"# Read a CSV file into a DataFrame",
+      "df_"}), i(1),t({" = spark.read.csv(path='"}),
+      rep(1), t({".csv', header=True, inferSchema=True, escape='\"')", ""}),
+      i(0)
     }),
-    m.s("barchart", {
-      m.t({"import matplotlib.pyplot as "}), m.i(1), m.t({"", ""}),
+  })
+
+  ls.add_snippets('python', {
+    s('for', {
+      t('for '), i(1, 'item'), t(' in '), i(2, 'items'), t(':'), newline(),
+      indent(), i(0),
     }),
-    m.s("#i", {
-      m.t({"# pyright: ignore", ""}),
+    s('if', {
+      t('if '), i(1, 'condition'), t(':'), newline(),
+      indent(), i(0),
+    }),
+    s('elif', {
+      t('elif '), i(1, 'condition'), t(':'), newline(),
+      indent(), i(0),
+    }),
+    s('else', {
+      t('else:'), newline(),
+      indent(), i(0),
+    }),
+    s('while', {
+      t('while '), i(1, 'condition'), t(':'), newline(),
+      indent(), i(0),
+    }),
+  })
+
+  --dict_method_2 = {key:value for key, value in zip(keys_list, values_list)}
+  ls.add_snippets('python', {
+    s('zip', {
+      i(1, 'dict'), t(' = {key:value for key, value in '),
+      t('zip('), i(2, 'keys_list'), t(', '), i(3, 'values_list'), t(')'), newline(),
+      i(0)
     }),
   })
 

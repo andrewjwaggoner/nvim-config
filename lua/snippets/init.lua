@@ -96,6 +96,7 @@ end
 
 local m = module()
 ls.snippets = {}
+snippets.all.init(ls, m)
 snippets.c.init(ls, m) 
 snippets.md.init(ls, m)
 snippets.py.init(ls, m)
