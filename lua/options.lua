@@ -1,7 +1,7 @@
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 vim.g.mapleader = ' '
-vim.g.themes = {}
+vim.g.themes = {'tokyonight'}
 vim.g.copilot_filetypes = {
   ["markdown"] = true,
 }

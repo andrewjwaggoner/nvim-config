@@ -3,7 +3,7 @@ local tokyonight = { package_name = 'folke/tokyonight.nvim', themes = { 'tokyoni
 function tokyonight.config()
   require('tokyonight').setup {}
 
-  vim.g.themes = tokyonight.themes
+  vim.g.themes = {unpack(vim.g.themes), unpack(tokyonight.themes)}
   vim.g.tokyonight_style = 'tokyonight-moon'
   vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
 end

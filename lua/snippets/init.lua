@@ -1,16 +1,8 @@
 local success, ls = pcall(require, 'luasnip')
 if not success then
-    print("Error: luasnip could not be properly required.")
+    print('Error: luasnip could not be properly required.')
     return {}
 end
-
-ls.setup({
-  history = true,
-  updateevents = {"TextChanged","TextChangedI"},
-  link_roots = true,
-  keep_roots = true,
-  link_children = true
-})
 
 local snippets = {}
 snippets.c = require('snippets.c')
@@ -23,28 +15,28 @@ local function module()
   -- some shorthands...
   local lsm = {}
   lsm.c = ls.choice_node
-  lsm.conds = require("luasnip.extras.conditions")
-  lsm.conds_expand = require("luasnip.extras.conditions.expand")
+  lsm.conds = require('luasnip.extras.conditions')
+  lsm.conds_expand = require('luasnip.extras.conditions.expand')
   lsm.d = ls.dynamic_node
-  lsm.dl = require("luasnip.extras").dynamic_lambda
+  lsm.dl = require('luasnip.extras').dynamic_lambda
   lsm.f = ls.function_node
-  lsm.fmt = require("luasnip.extras.fmt").fmt
-  lsm.fmta = require("luasnip.extras.fmt").fmta
+  lsm.fmt = require('luasnip.extras.fmt').fmt
+  lsm.fmta = require('luasnip.extras.fmt').fmta
   lsm.i = ls.insert_node
-  lsm.l = require("luasnip.extras").lambda
-  lsm.m = require("luasnip.extras").match
-  lsm.n = require("luasnip.extras").nonempty
-  lsm.p = require("luasnip.extras").partial
+  lsm.l = require('luasnip.extras').lambda
+  lsm.m = require('luasnip.extras').match
+  lsm.n = require('luasnip.extras').nonempty
+  lsm.p = require('luasnip.extras').partial
   lsm.r = ls.restore_node
-  lsm.rep = require("luasnip.extras").rep
+  lsm.rep = require('luasnip.extras').rep
   lsm.s = ls.snippet
   lsm.sn = ls.snippet_node
   lsm.t = ls.text_node
-  lsm.types = require("luasnip.util.types")
+  lsm.types = require('luasnip.util.types')
 
   --helpers
-  lsm.newline = function() return lsm.t({"", ""}) end
-  lsm.indent = function() return lsm.t("  ") end
+  lsm.newline = function() return lsm.t({'', ''}) end
+  lsm.indent = function() return lsm.t('  ') end
   -- combination of t,i,t nodes
   lsm.tit = function(idx, t1, i1, t2)
     local result = {}
@@ -58,18 +50,17 @@ local function module()
     return lsm.sn(idx, result)
   end
 
+  -- current strategy is to do a restoreNode on our snippet_fn(), indexed with level
   lsm.recs = function(snippet_fn, level)
-
     level = (level or 0)
 
     local function recs_fn()
-     print(level)
       return lsm.sn(nil, {
         lsm.sn(nil, {
           unpack(snippet_fn())
         }),
         lsm.c(1, {
-          lsm.t(""),
+          lsm.t(''),
           lsm.sn(nil, {
             lsm.newline(), 
             lsm.d(1, lsm.recs(snippet_fn, level+1))})
@@ -79,9 +70,23 @@ local function module()
     return recs_fn
   end
 
+  lsm.iter = function(idx,snip_name, new_line)
+    local delimiter = lsm.t('')
+
+    if new_line then
+      delimiter = lsm.newline()
+    end
+
+    idx = (idx or 1)
+    return lsm.c(idx, {
+      lsm.t(''),
+      lsm.tit(1, snip_name, delimeter),
+    })
+  end
+
   -- Easy way to get date
   lsm.date_input = function(_, _, _, fmt)
-      fmt = fmt or "%Y-%m-%d"
+      fmt = fmt or '%Y-%m-%d'
       return lsm.sn(nil, lsm.i(1, os.date(fmt)))
   end
 
