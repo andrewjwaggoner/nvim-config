@@ -13,7 +13,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+Util = require('util')
 require('options')
 require('mappings')
 require('plugins')
 require('autocommands')
+
+Util.printTable(vim.g.themes, true)
