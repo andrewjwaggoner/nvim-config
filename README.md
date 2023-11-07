@@ -4,37 +4,41 @@
 
 ## What Is This?
 
-This is my person neovim configuration. 
+This is my personal neovim configuration. 
 
-## Structure
+## Neovim Config Structure
 ```
-├── init.lua
+├── init.lua                   main entry point for neovim
 ├── README.md                  this document
 ├── lazy-lock.lua              version locks packages, should be in source control
-├── lua
-│   ├── snippets               this folder houses all of the snippets for luasnip
-│   │   ├─ ...
-│   ├── config                 this folder houses all of our setup functions
-│   │   ├─ ...
-│   ├── options.lua            vim options
-│   ├── plugins.lua            plugin manager setup, auto loads config
-│   ├── autocommands.lua       your custom autocommands go here
-│   └── mappings.lua           your keymaps go here
+└── lua
+    ├── snippets               this folder houses all of the snippets for luasnip
+    │   ├─ ...
+    ├── config                 this folder houses all of our setup functions
+    │   ├─ init.lua            this file loads all of the config files programmatically
+    │   ├─ ...
+    └── mappings.lua           misc keymaps that don't belong to a plugin
+    ├── autocommands.lua       custom autocommands that don't belong to a plugin
+    ├── options.lua            vim options
+    ├── plugins.lua            plugin manager setup, auto loads config
+    └── util.lua               utility library for handling common tasks. Table functions, etc..
 ```
 A nice structure, right? Looks complicated? Obviously, since it's Neovim, you can delete literally
 ANYTHING you'd like! This structure is mostly for organization, and I've tried
 to keep it idiomatic, so looking at other configs and examples should be straightforward. 
 
-### Plugins I'm Using
+### Plugins I'm Currently Using
 
 [cabline.nvim](https://github.com/andrewjwaggoner/cabline.nvim) custom tabline for my own workflow  
 [colortils.nvim](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
 [git-messenger.nvim](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
+[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) for indent guides  
 [lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager
-[luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets
+[luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets  
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  
 [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) for blending mason and lspconfig  
 [mason.nvim](https://github.com/williamboman/mason.nvim) for handling LSP/DAP stuff  
+[nightfly.nvim](https://github.com/bluz71/vim-nightfly-colors) one of the themes I'm using  
 [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) for simple color code highlighting  
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) standard LSP for Neovim.  
 [nvim-surround](https://github.com/tpope/vim-surround) for better surround features  
@@ -44,12 +48,17 @@ to keep it idiomatic, so looking at other configs and examples should be straigh
 [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) helper functions for lua  
 [popup.nvim](https://github.com/nvim-lua/popup.nvim) popup API plugin for neovim  
 [telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) fzy native for telescope  
-[telescope-luasnip.nvim](https://github.com/benfowler/telescope-luasnip.nvim) telescope integration for luasnip
+[telescope-luasnip.nvim](https://github.com/benfowler/telescope-luasnip.nvim) telescope integration for luasnip  
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
-[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) theme I'm using  
-[trouble.nvim](https://github.com/folke/trouble.nvim) awesome plugin for displaying troublesome things, with native LSP integration and telescope integration  
+[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) one of the themes I'm using  
+[trouble.nvim](https://github.com/folke/trouble.nvim) awesome plugin for displaying troublesome things  
 [vim-fugitive](https://github.com/tpope/vim-fugitive) for easy git commands  
 
+
+### Adding Plugins
+
+Adding plugins is easy. Just add a lua file in the `config` folder with a `lazy()` function that is exactly what you'd pass 
+into Lazy to the load the plugin. Add a `config()` function to handle all of your setup See any of the existing plugins for examples.
 ### The Config Folder
 
 The main config folder is `lua/config`. This is where all of the setup functions exist. I package them up automagically via `init.lua`
@@ -80,7 +89,7 @@ won't be able to use it in Powershell/Terminal.
 ### Fzf Dependency
 
 This uses fzf for fuzzy finding. You'll need to install it. It's included in most OS package managers. Without it, you won't be able 
-to use Telescope's live grep, or any of the other fzf features.
+to use Telescope's live grep, or any of the other fzf features. Remove fzf from telescope if you want to use the original search functionality.
 
 ### LSP
 
