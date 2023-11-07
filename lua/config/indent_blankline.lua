@@ -1,6 +1,7 @@
 local indent_blankline = {}
 
 function indent_blankline.config()
+  require("ibl").setup({})
 end
 function indent_blankline.lazy()
   return {
