@@ -6,8 +6,7 @@ function indent_blankline.lazy()
   return {
     'lukas-reineke/indent-blankline.nvim',
     config = indent_blankline.config,
-    lazy = true,
-    main = 'ibl' }
+    lazy = false }
 end
 
 return indent_blankline
