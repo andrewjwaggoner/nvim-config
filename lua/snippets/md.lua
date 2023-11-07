@@ -104,9 +104,9 @@ function md.init(ls, m)
   ls.add_snippets('markdown', {
     s('flowchart', {
       t({'```mermaid', ''}),
-       t('graph '), chart_direction(1), newline(), 
-       indent(), iter(2,'flowline', true), newline(),
-       t({'```', ''}),
+      t('graph '), chart_direction(1), newline(), 
+      indent(), iter(2,'flowline', true), newline(),
+      t({'```', ''}),
     }),
   })
 
@@ -127,6 +127,45 @@ function md.init(ls, m)
       indent(), tit(1, 'title ', 'text'), newline(),
       c(2, {tit(1, 'journeyline'),tit(1, 'title ', 'text'), t('') }),
       t({'```', ''}),
+    })
+  })
+
+  -- SEQUENCE
+  ls.add_snippets('markdown', {
+    s('sequenceItem', {
+      c(1, {
+        sn(1, {
+          i(1,'Alice'),
+          c(2, {
+            t('->'),
+            t('-->'),
+            t('->>'),
+            t('-->>'),
+            t('-)'),
+            t('--)'),
+            t('-x'),
+            t('--x'),
+          }),
+          i(3, 'Bob'),
+          t(': '),
+          i(4, '<message>'),
+        }),
+        tit(2, 'participant ', 'Bob'),
+        tit(2, 'actor ', 'Bob'),
+      }),
+      newline(), c(2, {
+        t(''),
+        tit(1, 'sequenceItem', ''),
+      }),
+    })
+  })
+
+  ls.add_snippets('markdown', {
+    s('sequence', {
+      t({'```mermaid', ''}),
+      t("sequenceDiagram"), newline(),
+      indent(), c(1, {tit(1, 'sequenceItem', ''),}),
+      newline(), t({'```', ''}),
     })
   })
 
