@@ -1,4 +1,4 @@
-local nightfly = { package_name = "bluz71/vim-nightfly-colors", themes = { "nightfly", "nightflylight" } }
+local nightfly = { package_name = "bluz71/vim-nightfly-colors", themes = { "nightfly"} }
 
 function nightfly.config()
   vim.g.themes = Util.merge(vim.g.themes, nightfly.themes)

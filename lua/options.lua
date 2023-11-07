@@ -1,7 +1,7 @@
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 vim.g.mapleader = ' '
-vim.g.themes = {'tokyonight'}
+vim.g.themes = {}
 vim.g.copilot_filetypes = {
   ["markdown"] = true,
 }
@@ -11,7 +11,6 @@ vim.opt.clipboard         = 'unnamedplus';
 vim.opt.cmdheight         = 2;
 vim.opt.complete          = '.,w,b';
 vim.opt.cursorline        = true;
-vim.opt.cursorlineopt     = 'number';
 vim.opt.diffopt           = 'filler,iwhite,internal';
 vim.opt.directory         = cache_dir .. 'swap/';
 vim.opt.expandtab         = true;
@@ -28,7 +27,7 @@ vim.opt.redrawtime        = 500;
 vim.opt.relativenumber    = true;
 vim.opt.ruler             = false;
 vim.opt.scrolloff         = 2;
-vim.opt.shada             = "!,'300,<50,@100,s10,h";
+vim.opt.shada             = "!,'300,<50,@100,s10,h,%";
 vim.opt.shiftround        = true;
 vim.opt.shiftwidth        = 2;
 vim.opt.shortmess         = "filnxtToOFI";

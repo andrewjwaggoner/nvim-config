@@ -12,9 +12,8 @@ vim.api.nvim_create_user_command('ColorschemeNext', function()
   local new_index = (current_index % #vim.g.themes) + 1
   local new_theme = vim.g.themes[new_index]
   vim.g.current_style = new_theme
-  print(new_theme)
   vim.cmd('colorscheme ' .. new_theme)
-  require('config/galaxyline').config()
+  print(new_theme)
 end, {
   nargs = '*',
   desc = 'Moves to the next colorscheme we have',

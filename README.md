@@ -33,7 +33,9 @@ to keep it idiomatic, so looking at other configs and examples should be straigh
 [colortils.nvim](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
 [git-messenger.nvim](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
 [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) for indent guides  
+[kanagawa.nvim](https://github.com/rebelot/kanagawa.vim) one of the themes I'm using
 [lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager
+[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) for a nice statusline
 [luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets  
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  
 [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) for blending mason and lspconfig  
