@@ -14,6 +14,16 @@ function py.init(ls,m)
   local iter = m.iter
   local rep = m.rep
 
+  -- Quick snippets for my ipynb work
+  ls.add_snippets('python', {
+    s("#c", {
+      t("# %%"), newline(),
+    }),
+    s("#m", {
+      t("# %% [markdown]"), newline(),
+    })
+  })
+
   ls.add_snippets('python', {
     s("def", {
       t("def "),
