@@ -35,6 +35,7 @@ to keep it idiomatic, so looking at other configs and examples should be straigh
 [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) for indent guides  
 [kanagawa.nvim](https://github.com/rebelot/kanagawa.vim) one of the themes I'm using
 [lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager
+[lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim) for an lsp statusline that works with lualine
 [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) for a nice statusline
 [luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets  
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  

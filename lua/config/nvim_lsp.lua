@@ -41,7 +41,7 @@ nvim_lsp.config = function()
   require 'lspconfig'.dockerls.setup { on_attach = on_attach }
   require 'lspconfig'.jsonls.setup { on_attach = on_attach }
   require 'lspconfig'.marksman.setup { on_attach = on_attach }
-  require 'lspconfig'.omnisharp.setup { on_attach = on_attach }
+  require 'lspconfig'.csharp_ls.setup { on_attach = on_attach }
   require 'lspconfig'.pyright.setup { on_attach = on_attach }
   require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach }
   require 'lspconfig'.sqlls.setup { on_attach = on_attach }
@@ -55,6 +55,7 @@ nvim_lsp.lazy = function()
   return {
     'neovim/nvim-lspconfig', 
     lazy = true, 
+    dependencies = { 'nvim-lua/lsp-status.nvim' },
     config = nvim_lsp.config }
 end
 return nvim_lsp
