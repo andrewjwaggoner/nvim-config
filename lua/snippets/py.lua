@@ -19,7 +19,19 @@ function py.init(ls,m)
     s("#c", {
       t("# %%"), newline(),
     }),
+    s("#cm"), {
+      t("# %%"), newline(),
+      t("# %% [markdown]"), newline(),
+    }),
+    s("#mc"), {
+      t("# %% [markdown]"), newline(),
+      t("# %%"), newline(),
+    }),
     s("#m", {
+      t("# %% [markdown]"), newline(),
+    }),
+    s("#mm", {
+      t("# %% [markdown]"), newline(),
       t("# %% [markdown]"), newline(),
     })
   })
@@ -59,6 +71,18 @@ function py.init(ls,m)
       t('for '), i(1, 'item'), t(' in '), i(2, 'items'), t(':'), newline(),
       indent(), i(0),
     }),
+    s('fori', {
+      t('for '), i(1, 'index'), t(', '), i(2, 'item'), t(' in enumerate('), i(3, 'items'), t('):'), newline(),
+      indent(), i(0),
+    }),
+    s('forr', {
+      t('for '), i(1, 'item'), t(' in range('), i(2, 'items'), t('):'), newline(),
+      indent(), i(0),
+    }),
+    s('forri', {
+      t('for '), i(1, 'index'), t(', '), i(2, 'item'), t(' in enumerate(range('), i(3, 'items'), t(')):'), newline(),
+      indent(), i(0),
+    }),
     s('if', {
       t('if '), i(1, 'condition'), t(':'), newline(),
       indent(), i(0),
@@ -85,7 +109,7 @@ function py.init(ls,m)
       i(0)
     }),
   })
-
+ 
   end
 
 return py
