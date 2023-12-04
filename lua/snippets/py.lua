@@ -19,11 +19,11 @@ function py.init(ls,m)
     s("#c", {
       t("# %%"), newline(),
     }),
-    s("#cm"), {
+    s("#cm", {
       t("# %%"), newline(),
       t("# %% [markdown]"), newline(),
     }),
-    s("#mc"), {
+    s("#mc", {
       t("# %% [markdown]"), newline(),
       t("# %%"), newline(),
     }),
