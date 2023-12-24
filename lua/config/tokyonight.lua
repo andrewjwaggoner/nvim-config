@@ -25,7 +25,7 @@ function tokyonight.lazy()
     config = tokyonight.config, 
     lazy = false, 
     disable = true,
-    priority = 999 }
+    priority = 1000 }
 end
 
 return tokyonight
