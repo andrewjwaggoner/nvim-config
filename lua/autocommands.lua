@@ -36,6 +36,8 @@ vim.api.nvim_create_user_command('Case', function(opts)
     vim.cmd('s/\\<./\\u&/g')
   else
     print('Invalid mode')
+
+  vim.defer_fn(function() vim.cmd('noh') end, 500)
   end
 end, {
   nargs = 1,
