@@ -1,4 +1,4 @@
-function get_index(key, themes)
+local function get_index(key, themes)
   for i, v in ipairs(themes) do
     if v == key then
       return i
@@ -17,6 +17,13 @@ vim.api.nvim_create_user_command('ColorschemeNext', function()
 end, {
   nargs = '*',
   desc = 'Moves to the next colorscheme we have',
+})
+
+vim.api.nvim_create_user_command('CompileLatex', function()
+  vim.cmd('!mk4ht htlatex %')
+end, {
+  nargs = '*',
+  desc = 'Compile the current latex file',
 })
 
 vim.api.nvim_create_user_command('Case', function(opts)
