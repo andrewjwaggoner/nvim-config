@@ -20,10 +20,21 @@ end, {
 })
 
 vim.api.nvim_create_user_command('CompileLatex', function()
-  vim.cmd('!mk4ht htlatex %')
+  vim.cmd('!mkdir -p output')
+  vim.cmd('!cp % output')
+  vim.cmd('!cd output && mk4ht htlatex %')
 end, {
   nargs = '*',
   desc = 'Compile the current latex file',
+})
+
+vim.api.nvim_create_user_command('WatchLatexHtml', function()
+  --vim.cmd('!mkdir -p output')
+  --vim.cmd('!cd output && inotifywait -m -e close_write *.html | while read; xdg-open *.html; done')
+vim.cmd('!xdg-open output/%:t:r.html')
+end, {
+  nargs = '*',
+  desc = 'Watch the current latex file and compile it to html',
 })
 
 vim.api.nvim_create_user_command('Case', function(opts)
