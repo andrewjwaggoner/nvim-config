@@ -12,6 +12,7 @@ vim.keymap.set('n', '<Leader>do'        , '<Cmd>windo diffoff<CR>', { silent = t
 vim.keymap.set('n', '<Leader>dw'        , '<Cmd>windo diffthis<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>ex'       , '<Cmd>Explore!<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>h'        , '<Cmd>q:<CR>', { silent = true})
+vim.keymap.set('n', '<Leader>ca', '<Cmd>CompileAsciiDoc<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>cl', '<Cmd>CompileLatex<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>wl', '<Cmd>WatchLatexHtml<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>oh'       , '<Cmd>noh<CR>', { silent = true })
