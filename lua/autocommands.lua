@@ -29,7 +29,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command('CompileAsciiDoc', function()
-  vim.cmd('!asciidoctor %')
+  vim.cmd('!asciidoctor -r asciidoctor-diagram %')
 end, {
   nargs = '*',
   desc = 'Compile the current latex file',

@@ -2,7 +2,6 @@ local nvim_dap = {}
 
 nvim_dap.config = function()
   dap = require('dap')
-  print('test config')
   vim.keymap.set('n', '<Leader>dt', function() dap.toggle_breakpoint() end, { silent = true })
   vim.keymap.set('n', '<Leader>ds', function() dap.step_over() end, { silent = true })
   vim.keymap.set('n', '<Leader>di', function() dap.step_into() end, { silent = true })
