@@ -95,17 +95,18 @@ function nvim_tree.config()
     sync_root_with_cwd = true,
     hijack_cursor = true,
     view = { adaptive_size = true },
-    on_attach = on_attach
+    on_attach = on_attach,
+    git = { enable = true, ignore = false },
   })
 end
 
 function nvim_tree.lazy()
-  return { 
-    nvim_tree.package_name, 
-    cmd ='NvimTreeToggle', 
-    lazy = false, 
-    config = nvim_tree.config, 
-    dependencies='kyazdani42/nvim-web-devicons' 
+  return {
+    nvim_tree.package_name,
+    cmd ='NvimTreeToggle',
+    lazy = false,
+    config = nvim_tree.config,
+    dependencies='kyazdani42/nvim-web-devicons'
   }
 end
 return nvim_tree

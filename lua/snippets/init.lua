@@ -85,10 +85,14 @@ local function module()
     })
   end
 
-  -- Easy way to get date
+  -- time functions for snippets
   lsm.date_input = function(_, _, _, fmt)
-      fmt = fmt or '%Y-%m-%d'
-      return lsm.sn(nil, lsm.i(1, os.date(fmt)))
+    fmt = fmt or '%Y-%m-%d'
+    return lsm.sn(nil, lsm.i(1, os.date(fmt)))
+  end
+
+  lsm.time_input = function(_,_,_)
+    return lsm.sn(nil, lsm.i(1, tostring(os.time())))
   end
 
   -- use this object when wiring up snippets
