@@ -6,8 +6,8 @@ end
 function cabline.lazy()
   return {
     'andrewjwaggoner/cabline.nvim',
-    cabline.package_name, 
-    config = cabline.config, 
+    cabline.package_name,
+    config = cabline.config,
     lazy=true }
 end
 

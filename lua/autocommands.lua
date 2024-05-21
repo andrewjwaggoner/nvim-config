@@ -36,8 +36,6 @@ end, {
 })
 
 vim.api.nvim_create_user_command('WatchLatexHtml', function()
-  --vim.cmd('!mkdir -p output')
-  --vim.cmd('!cd output && inotifywait -m -e close_write *.html | while read; xdg-open *.html; done')
 vim.cmd('!xdg-open output/%:t:r.html')
 end, {
   nargs = '*',

@@ -1,9 +1,9 @@
-local tokyonight = { 
-  package_name = 'folke/tokyonight.nvim', 
-  themes = { 
-             --'tokyonight-storm', 
-             --'tokyonight-moon', 
-             'tokyonight-night', 
+local tokyonight = {
+  package_name = 'folke/tokyonight.nvim',
+  themes = {
+             --'tokyonight-storm',
+             --'tokyonight-moon',
+             'tokyonight-night',
              --'tokyonight-day',
            }}
 
@@ -21,9 +21,9 @@ end
 
 function tokyonight.lazy()
   return {
-    tokyonight.package_name, 
-    config = tokyonight.config, 
-    lazy = false, 
+    tokyonight.package_name,
+    config = tokyonight.config,
+    lazy = false,
     disable = true,
     priority = 1000 }
 end

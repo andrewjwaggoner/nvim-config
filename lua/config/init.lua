@@ -16,6 +16,10 @@ local function get_config_files()
   local success, pipe = pcall(io.popen, get_directory_command(), 'r')
 
   if success then
+    if not pipe then
+      print('Error while reading config directory: ' .. vim.fn.getcwd())
+      return configFiles
+    end
     for line in pipe:lines() do
       if line ~= 'init.lua' and line ~= nil then -- ignore current file for obvious reasons
         table.insert(configFiles, line)

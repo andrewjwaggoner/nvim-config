@@ -1,6 +1,6 @@
 local nvim_lsp = {}
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
@@ -26,6 +26,13 @@ end
 
 local on_attach_omnisharp = function(client, bufnr)
   on_attach(client, bufnr)
+
+  -- Custom keybinds
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', '<Leader><C-b>', '<Cmd>!dotnet build<CR>', bufopts)
+  vim.keymap.set('n', '<Leader><C-r>', '<Cmd>!dotnet run<CR>', bufopts)
+  vim.keymap.set('n', '<Leader><C-t>', '<Cmd>!dotnet test<CR>', bufopts)
+
   client.server_capabilities.semanticTokensProvider = {
       full = vim.empty_dict(),
       legend = {

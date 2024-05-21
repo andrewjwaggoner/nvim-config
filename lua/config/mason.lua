@@ -41,11 +41,11 @@ mason.lspconfig = function()
 
 end
 mason.lazy = function()
-  return { 
-    'williamboman/mason-lspconfig.nvim', 
-    cmd = "Mason", 
-    lazy = true, 
-    config = mason.lspconfig, 
+  return {
+    'williamboman/mason-lspconfig.nvim',
+    cmd = "Mason",
+    lazy = true,
+    config = mason.lspconfig,
     dependencies = {
       { 'williamboman/mason.nvim', lazy = true, config = mason.config}
     }

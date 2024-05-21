@@ -8,7 +8,7 @@ function trouble.config()
   }
 end
 function trouble.lazy()
-  return { 
+  return {
     'folke/trouble.nvim',
     lazy = true,
     dependencies = 'kyazdani42/nvim-web-devicons',

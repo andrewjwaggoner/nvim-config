@@ -1,5 +1,5 @@
-local kanagawa = { 
-  package_name = "rebelot/kanagawa.nvim", 
+local kanagawa = {
+  package_name = "rebelot/kanagawa.nvim",
   themes = { "kanagawa-wave", "kanagawa-dragon", "kanagawa-lotus"} }
 
 function kanagawa.config()

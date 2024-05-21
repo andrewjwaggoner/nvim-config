@@ -3,7 +3,7 @@
 -- jupyter nbextension install jupyter_ascending --sys-prefix --py && \
 -- jupyter nbextension enable jupyter_ascending --sys-prefix --py && \
 -- jupyter serverextension enable jupyter_ascending --sys-prefix --py
--- 
+--
 -- Afterwards, you can use the following command to make a notebook and py file.
 -- python -m jupyter_ascending.scripts.make_pair --base <name>
 

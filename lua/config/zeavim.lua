@@ -13,7 +13,6 @@ function zeavim.config()
     ['\\v^Dockerfile$'] = 'docker',
     ['\\v^Gemfile$'] = 'ruby',
     ['\\v^Rakefile$'] = 'ruby',
-    ['\\v^Rakefile$'] = 'ruby',
     ['\\v^docker-compose'] = 'docker_compose',
     ['\\v^makefile$'] = 'make',
     ['css'] = 'css,foundation',
@@ -22,9 +21,9 @@ function zeavim.config()
   }
 end
 function zeavim.lazy()
-  return { 
-    zeavim.package_name, 
-    lazy = true, 
+  return {
+    zeavim.package_name,
+    lazy = true,
     cmd = 'Zeavim',
     config = zeavim.config }
 end
