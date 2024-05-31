@@ -15,7 +15,7 @@ vim.opt.diffopt           = 'filler,iwhite,internal';
 vim.opt.directory         = cache_dir .. 'swap/';
 vim.opt.expandtab         = true;
 vim.opt.foldlevelstart    = 99;
-vim.opt.formatoptions     = 'rq';
+vim.opt.formatoptions     = '';
 vim.opt.grepprg           = 'rg --hidden --vimgrep --smart-case --';
 vim.opt.infercase         = true;
 vim.opt.jumpoptions       = 'stack';
@@ -50,3 +50,12 @@ vim.opt.wrap              = false;
 vim.opt.writebackup       = false;
 
 vim.diagnostic.config({ severity_sort = true })
+
+-- Clobber so I don't get comment continuation
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove("c")
+    vim.opt_local.formatoptions:remove("r")
+  end,
+})
