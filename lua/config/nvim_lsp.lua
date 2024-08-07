@@ -121,7 +121,7 @@ nvim_lsp.config = function()
     }
   }
 
-  local lsp_path = '~/.local/share/nvim/mason/bin/'
+  local lsp_path = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/'
 
   require 'lspconfig'.bashls.setup { on_attach = on_attach, cmd = { lsp_path .. 'bash-language-server' } }
   require 'lspconfig'.clangd.setup { on_attach = on_attach, cmd = { lsp_path .. 'clangd' } }
