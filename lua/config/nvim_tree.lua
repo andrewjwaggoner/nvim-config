@@ -97,6 +97,7 @@ function nvim_tree.config()
     view = { adaptive_size = true },
     on_attach = on_attach,
     git = { enable = true, ignore = false },
+    filters = { dotfiles = true },
   })
 end
 
