@@ -28,6 +28,7 @@ mason.lspconfig = function()
       'cssls',
       'dockerls',
       'jsonls',
+      'lua_ls',
       'marksman',
       'omnisharp',
       'pyright',
@@ -35,7 +36,7 @@ mason.lspconfig = function()
       'sqlls',
       'tsserver',
       'vimls',
-      'yamlls'
+      'yamlls',
     },
   }
 
