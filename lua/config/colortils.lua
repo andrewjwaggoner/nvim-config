@@ -11,5 +11,4 @@ function colortils.lazy()
     cmd = "Colortils",
     lazy = true }
 end
-
 return colortils

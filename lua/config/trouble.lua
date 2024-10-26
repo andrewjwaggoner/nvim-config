@@ -1,5 +1,6 @@
 local trouble = {}
-vim.keymap.set('n', '<Leader>r', '<Cmd>TroubleToggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>r', '<Cmd>Trouble diagnostics toggle<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>rs', '<Cmd>Trouble symbols toggle<CR>', { silent = true })
 
 function trouble.config()
   require("trouble").setup {
@@ -12,7 +13,7 @@ function trouble.lazy()
     'folke/trouble.nvim',
     lazy = true,
     dependencies = 'kyazdani42/nvim-web-devicons',
-    cmd="TroubleToggle",
+    cmd="Trouble",
     config = trouble.config }
 end
 
