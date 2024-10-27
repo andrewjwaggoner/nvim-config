@@ -133,7 +133,7 @@ nvim_lsp.config = function()
   require 'lspconfig'.pyright.setup { on_attach = on_attach }
   require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach, cmd = { lsp_path .. 'rust-analyzer' } }
   require 'lspconfig'.sqlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'sql-language-server', '--stdio' } }
-  require 'lspconfig'.ts_ls.setup { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
+  require 'lspconfig'.tsserver.setup { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
   require 'lspconfig'.vimls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vim-language-server', '--stdio' } }
   require 'lspconfig'.yamlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'yaml-language-server', '--stdio' } }
 end
