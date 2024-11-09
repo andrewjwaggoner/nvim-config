@@ -1,4 +1,5 @@
 local diffview = {}
+vim.keymap.set('n', '<Leader>do', '<Cmd>diffoff<CR>', { silent = true })
 
 function diffview.config()
 end

@@ -131,6 +131,7 @@ nvim_lsp.config = function()
   require 'lspconfig'.marksman.setup { on_attach = on_attach, cmd = { lsp_path .. 'marksman' } }
   require 'lspconfig'.omnisharp.setup { on_attach = on_attach_omnisharp, cmd = { lsp_path .. 'omnisharp', '--languageserver' } }
   require 'lspconfig'.pyright.setup { on_attach = on_attach }
+  --require 'lspconfig'.clojure_lsp.setup { }
   require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach, cmd = { lsp_path .. 'rust-analyzer' } }
   require 'lspconfig'.sqlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'sql-language-server', '--stdio' } }
   require 'lspconfig'.tsserver.setup { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
