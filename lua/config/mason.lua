@@ -34,7 +34,7 @@ mason.lspconfig = function()
       'pyright',
       'rust_analyzer',
       'sqlls',
-      'tsserver',
+      'ts_ls',
       'vimls',
       'yamlls',
     },
