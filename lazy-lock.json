@@ -2,7 +2,7 @@
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
   "cabline.nvim": { "branch": "main", "commit": "29e11fe33a81dc88d5c281f2373adab41e7195e8" },
   "colortils.nvim": { "branch": "main", "commit": "9ec6db0a1dc381acb04be715f17f636909d2dcce" },
-  "conjure": { "branch": "master", "commit": "ccec0904cadebba50dc92b39629af0f3df3ee09d" },
+  "conjure": { "branch": "main", "commit": "320862224f7bc6b1ed6d084bae969166dd71f051" },
   "copilot.vim": { "branch": "release", "commit": "87038123804796ca7af20d1b71c3428d858a9124" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "git-messenger.vim": { "branch": "master", "commit": "edc603d4cda7894a743e383e16c638e206d03148" },
@@ -20,11 +20,19 @@
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
   "nvim-dap": { "branch": "master", "commit": "0e673accbb512e1e191dfb4fecea89cc38c1bcdd" },
   "nvim-dbee": { "branch": "master", "commit": "21d2cc0844a16262bb6ea93ab3d0a0f20bd87853" },
+<<<<<<< HEAD
   "nvim-lspconfig": { "branch": "master", "commit": "8b15a1a597a59f4f5306fad9adfe99454feab743" },
   "nvim-surround": { "branch": "main", "commit": "9f0cb495f25bff32c936062d85046fbda0c43517" },
   "nvim-tree.lua": { "branch": "master", "commit": "68fc4c20f5803444277022c681785c5edd11916d" },
   "nvim-treesitter": { "branch": "master", "commit": "e947d35bbf919ea88a24c21cb8afa4621e3cf547" },
   "nvim-web-devicons": { "branch": "master", "commit": "4adeeaa7a32d46cf3b5833341358c797304f950a" },
+=======
+  "nvim-lspconfig": { "branch": "master", "commit": "88dff6268a068403c87b461aee69beb61ceb8303" },
+  "nvim-surround": { "branch": "main", "commit": "9f0cb495f25bff32c936062d85046fbda0c43517" },
+  "nvim-tree.lua": { "branch": "master", "commit": "68fc4c20f5803444277022c681785c5edd11916d" },
+  "nvim-treesitter": { "branch": "master", "commit": "fc687f38d4ea9a7399707a5a2d57297c2ac17323" },
+  "nvim-web-devicons": { "branch": "master", "commit": "d42e68608ba11de8567edb6aeaa0b12bdf627cbc" },
+>>>>>>> 12ad3f7bf02d0ff788c454bb24f2be4bce77c88f
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "77e5bad54227dcfe3878ffbda88ab1efdaacb475" },
