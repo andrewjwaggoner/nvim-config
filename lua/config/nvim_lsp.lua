@@ -127,6 +127,7 @@ nvim_lsp.config = function()
   require 'lspconfig'.clangd.setup { on_attach = on_attach, cmd = { lsp_path .. 'clangd' } }
   require 'lspconfig'.cssls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-css-language-server', '--stdio' } }
   require 'lspconfig'.dockerls.setup { on_attach = on_attach, cmd = { lsp_path .. 'docker-langserver', '--stdio' } }
+  require 'lspconfig'.glslls.setup { on_attach = on_attach }
   require 'lspconfig'.jsonls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-json-language-server', '--stdio' } }
   require 'lspconfig'.marksman.setup { on_attach = on_attach, cmd = { lsp_path .. 'marksman' } }
   require 'lspconfig'.omnisharp.setup { on_attach = on_attach_omnisharp, cmd = { lsp_path .. 'omnisharp', '--languageserver' } }
