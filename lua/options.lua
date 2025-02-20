@@ -49,7 +49,7 @@ vim.opt.winblend          = 16;
 vim.opt.wrap              = false;
 vim.opt.writebackup       = false;
 
-vim.diagnostic.config({ severity_sort = true })
+vim.diagnostic.config({ virtual_text = true, severity_sort = true })
 
 -- Clobber so I don't get comment continuation
 vim.api.nvim_create_autocmd("FileType", {

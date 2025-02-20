@@ -1,8 +1,6 @@
 local nvim_lsp = {}
 
 local on_attach = function(_, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -122,22 +120,22 @@ nvim_lsp.config = function()
   }
 
   local lsp_path = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/'
-
   require 'lspconfig'.bashls.setup { on_attach = on_attach, cmd = { lsp_path .. 'bash-language-server' } }
   require 'lspconfig'.clangd.setup { on_attach = on_attach, cmd = { lsp_path .. 'clangd' } }
   require 'lspconfig'.cssls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-css-language-server', '--stdio' } }
   require 'lspconfig'.dockerls.setup { on_attach = on_attach, cmd = { lsp_path .. 'docker-langserver', '--stdio' } }
-  require 'lspconfig'.glsl_analyzer.setup { on_attach = on_attach }
+  require 'lspconfig'.glsl_analyzer.setup { on_attach = on_attach, single_file_support = true }
   require 'lspconfig'.jsonls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-json-language-server', '--stdio' } }
   require 'lspconfig'.marksman.setup { on_attach = on_attach, cmd = { lsp_path .. 'marksman' } }
   require 'lspconfig'.omnisharp.setup { on_attach = on_attach_omnisharp, cmd = { lsp_path .. 'omnisharp', '--languageserver' } }
   require 'lspconfig'.pyright.setup { on_attach = on_attach }
-  --require 'lspconfig'.clojure_lsp.setup { }
+  require 'lspconfig'.clojure_lsp.setup { }
   require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach, cmd = { lsp_path .. 'rust-analyzer' } }
   require 'lspconfig'.sqlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'sql-language-server', '--stdio' } }
   require 'lspconfig'.ts_ls.setup { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
   require 'lspconfig'.vimls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vim-language-server', '--stdio' } }
   require 'lspconfig'.yamlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'yaml-language-server', '--stdio' } }
+
 end
 
 nvim_lsp.lazy = function()

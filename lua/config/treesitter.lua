@@ -22,6 +22,9 @@ function treesitter.config()
       },
     },
   }
+
+  --require 'vim.treesitter.query'.set("clojure", "injections", "(str_lit) @glsl") -- Not quite working just yet
+
 end
 function treesitter.lazy()
   return {
