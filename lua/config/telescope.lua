@@ -2,12 +2,12 @@ local telescope = {}
 
 local function on_attach(bufnr)
   local api = require('telescope.actions')
-  vim.keymap.set('n', 'dd', api.delete_buffer, opts('Delete Buffer'))
-  vim.keymap.set('i', '<C-d>', api.delete_buffer, opts('Delete Buffer'))
-
   local function opts(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
+
+  vim.keymap.set('n', 'dd', api.delete_buffer, opts('Delete Buffer'))
+  vim.keymap.set('i', '<C-d>', api.delete_buffer, opts('Delete Buffer'))
 end
 function telescope.config()
   require('telescope').setup {

@@ -63,7 +63,7 @@ local function module()
         lsm.c(1, {
           lsm.t(''),
           lsm.sn(nil, {
-            lsm.newline(), 
+            lsm.newline(),
             lsm.d(1, lsm.recs(snippet_fn, level+1))})
         })
       })
@@ -71,17 +71,10 @@ local function module()
     return recs_fn
   end
 
-  lsm.iter = function(idx,snip_name, new_line)
-    local delimiter = lsm.t('')
-
-    if new_line then
-      delimiter = lsm.newline()
-    end
-
-    idx = (idx or 1)
-    return lsm.c(idx, {
+  lsm.iter = function(idx,snip_name, _)
+    return lsm.c((idx or 1), {
       lsm.t(''),
-      lsm.tit(1, snip_name, delimeter),
+      lsm.tit(1, snip_name, lsm.t('')),
     })
   end
 

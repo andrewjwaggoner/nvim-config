@@ -54,9 +54,9 @@ function glsl_extract.extract()
 
   -- Create a new normal buffer for editing
   local glsl_buf = vim.api.nvim_create_buf(false, false)
-  vim.api.nvim_buf_set_option(glsl_buf, "buflisted", true)
-  vim.api.nvim_buf_set_option(glsl_buf, "filetype", "glsl")
-  vim.api.nvim_buf_set_option(glsl_buf, "swapfile", false)
+  vim.api.nvim_buf_set_option_value("buflisted", true, { buf = glsl_buf })
+  vim.api.nvim_buf_set_option_value("filetype", "glsl", { buf = glsl_buf })
+  vim.api.nvim_buf_set_option_value("swapfile", false, { buf = glsl_buf })
 
   -- Give the buffer a filename so saving works
   local tmp_file = "/tmp/glsl_extract_" .. os.time() .. ".glsl"

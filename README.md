@@ -4,7 +4,7 @@
 
 ## What Is This?
 
-This is my personal neovim configuration. 
+This is my personal neovim configuration.  
 
 ## Neovim Config Structure
 ```
@@ -17,8 +17,8 @@ This is my personal neovim configuration.
     ├── config                 this folder houses all of our setup functions
     │   ├─ init.lua            this file loads all of the config files programmatically
     │   ├─ ...
-    └── mappings.lua           misc keymaps that don't belong to a plugin
     ├── autocommands.lua       custom autocommands that don't belong to a plugin
+    ├── mappings.lua           misc keymaps that don't belong to a plugin
     ├── options.lua            vim options
     ├── plugins.lua            plugin manager setup, auto loads config
     └── util.lua               utility library for handling common tasks. Table functions, etc..
@@ -29,20 +29,24 @@ to keep it idiomatic, so looking at other configs and examples should be straigh
 
 ### Plugins I'm Currently Using
 
+#### Functionality
 [cabline.nvim](https://github.com/andrewjwaggoner/cabline.nvim) custom tabline for my own workflow  
 [colortils.nvim](https://github.com/nvim-colortils/colortils.nvim) for a simple color picker  
+[conjure](https://github.com/Olical/conjure) for Clojure REPL support  
+[copilot](https://github.com/github/copilot.vim) for copilot support  
+[dadbod](https://github.com/tpope/vim-dadbod) for database support  
+[dbee](https://github.com/kndndrj/nvim-dbee) for a database UI  
+[diffview](https://github.com/sindrets/diffview.nvim) Single tabpage interface for easily cycling through diffs for all modified files for any git rev  
+[fugitive](https://github.com/tpope/vim-fugitive) for integrated git commands  
 [git-messenger.nvim](https://github.com/rhysd/git-messenger.vim) to view git history and bit blame easily  
-[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) for indent guides  
-[kanagawa.nvim](https://github.com/rebelot/kanagawa.vim) one of the themes I'm using
-[lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager
-[lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim) for an lsp statusline that works with lualine
-[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) for a nice statusline
+[gp.nvim](https://github.com/Robitx/gp.nvim) For GPT interfacing  
+[lazy.nvim](https://github.com/folke/lazy.nvim) plugin manager  
+[lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim) for an lsp statusline that works with lualine  
+[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) for a nice statusline  
 [luasnip](https://github.com/L3MON4D3/LuaSnip/) for snippets  
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) live server for easy markdown previews  
 [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) for blending mason and lspconfig  
 [mason.nvim](https://github.com/williamboman/mason.nvim) for handling LSP/DAP stuff  
-[nightfly.nvim](https://github.com/bluz71/vim-nightfly-colors) one of the themes I'm using  
-[nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) for simple color code highlighting  
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) standard LSP for Neovim.  
 [nvim-surround](https://github.com/tpope/vim-surround) for better surround features  
 [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) for file explorer (requires patched font)  
@@ -53,10 +57,16 @@ to keep it idiomatic, so looking at other configs and examples should be straigh
 [telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) fzy native for telescope  
 [telescope-luasnip.nvim](https://github.com/benfowler/telescope-luasnip.nvim) telescope integration for luasnip  
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder over lists  
-[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) one of the themes I'm using  
 [trouble.nvim](https://github.com/folke/trouble.nvim) awesome plugin for displaying troublesome things  
 [vim-fugitive](https://github.com/tpope/vim-fugitive) for easy git commands  
 
+#### Cosmetic
+[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) for indent guides  
+[kanagawa.nvim](https://github.com/rebelot/kanagawa.vim) one of the themes I'm using  
+[nightfly.nvim](https://github.com/bluz71/vim-nightfly-colors) one of the themes I'm using  
+[nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) for simple color code highlighting  
+[rainbow-delimiters](https://github.com/HiPhish/rainbow-delimiters.nvim) for rainbow brackets  
+[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) one of the themes I'm using  
 
 ### Adding Plugins
 

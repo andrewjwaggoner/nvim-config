@@ -4,13 +4,11 @@ function md.init(ls, m)
   local t = m.t
   local i = m.i
   local c = m.c
-  local d = m.d
   local s = m.s
   local sn = m.sn
   local tit = m.tit
   local newline = m.newline
   local indent = m.indent
-  local recs = m.recs
   local iter = m.iter
 
   -- Helper methods to construct markdown items
@@ -71,7 +69,6 @@ function md.init(ls, m)
     s({trig = 'italic', desc = 'italic'}, tit(1, '*', 'text', '*')),
     s({trig = 'strike', desc = 'strike'}, tit(1, '~~', 'text', '~~')),
     s({trig = 'quote', desc = 'quote'}, tit(1, '> ', 'quote', nil)),
-    s({trig = 'ul', desc = 'ul'}, {d(1, recs(list_item), {}, {user_args = {} }) }),
     s({trig = 'ol', desc = 'ol'}, tit(1, '1. ', 'item', nil)),
     s({trig = 'hr', desc = 'hr'}, t('---')),
     s({trig = 'head', desc = 'header'}, tit(1, '# ', 'header', nil)),
@@ -104,7 +101,7 @@ function md.init(ls, m)
   ls.add_snippets('markdown', {
     s('flowchart', {
       t({'```mermaid', ''}),
-      t('graph '), chart_direction(1), newline(), 
+      t('graph '), chart_direction(1), newline(),
       indent(), iter(2,'flowline', true), newline(),
       t({'```', ''}),
     }),
