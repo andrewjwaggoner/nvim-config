@@ -25,6 +25,7 @@ local allowed = {
   nvim_lsp = true,
   nvim_surround = true,
   nvim_tree = true,
+  oil = true,
   rainbow_delimiters = true,
   sessions = true,
   snippets = true,
