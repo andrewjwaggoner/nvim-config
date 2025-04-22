@@ -2,7 +2,6 @@ local conjure = {}
 
 vim.keymap.set('n', '<LocalLeader>ee', '<Cmd>ConjureEval<CR>', { silent = true })
 vim.keymap.set('n', '<LocalLeader>cc', '<Cmd>ConjureConnect<CR>', { silent = true })
-vim.api.nvim_echo({{"Consider setting up cmp for Conjure, and in general", "Normal"}}, false, {})
 
 function conjure.config()
 end
@@ -10,8 +9,12 @@ end
 function conjure.lazy()
   return {
     'Olical/conjure',
+    ft = { "clojure", "fennel", "racket", "lisp" },
     config = conjure.config,
-    lazy = false }
+    dependencies = {
+      --'PaterJason/cmp-conjure'
+    },
+    lazy = true }
 end
 
 return conjure

@@ -31,8 +31,9 @@ end
 function rainbow.lazy()
   return {
     'hiphish/rainbow-delimiters.nvim',
+    ft = { "lua", "vim", 'clojure', 'fennel', 'racket', 'lisp' },
     config = rainbow.config,
-    lazy = false }
+    lazy = true }
 end
 
 return rainbow
