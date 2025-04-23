@@ -1,6 +1,7 @@
 local oil = {}
 
   vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  vim.keymap.set("n", "<leader>to", "<cmd>Telescope oil<CR>", { noremap = true, silent = true })
 
 function oil.config()
   require("oil").setup({
@@ -12,6 +13,17 @@ function oil.config()
     win_options = {
       winblend = 0,
     }}})
+
+    require("telescope").setup({
+        extensions = {
+            oil = {
+                hidden = true,
+                debug = false,
+                no_ignore = false,
+                show_preview = true,
+            },
+        }
+    })
 end
 
 function oil.lazy()
@@ -20,7 +32,7 @@ function oil.lazy()
     ---@module 'oil'
     ---@type any
     opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "albenisolmos/telescope-oil.nvim", "nvim-tree/nvim-web-devicons" },
     lazy = false,
   }
 end
