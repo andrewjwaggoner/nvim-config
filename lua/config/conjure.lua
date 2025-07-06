@@ -1,7 +1,7 @@
 local conjure = {}
 
 vim.keymap.set('n', '<LocalLeader>ee', '<Cmd>ConjureEval<CR>', { silent = true })
-vim.keymap.set('n', '<LocalLeader>cc', '<Cmd>ConjureConnect<CR>', { silent = true })
+vim.keymap.set('n', '<LocalLeader>cn', '<Cmd>ConjureConnect<CR>', { silent = true })
 
 function conjure.config()
 end

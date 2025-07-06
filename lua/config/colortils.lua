@@ -1,5 +1,5 @@
 local colortils = {}
-vim.keymap.set('n', '<Leader>cc', '<Cmd>Colortils picker<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>ct', '<Cmd>Colortils picker<CR>', { silent = true })
 
 function colortils.config()
   require('colortils').setup()
