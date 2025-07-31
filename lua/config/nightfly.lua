@@ -3,7 +3,6 @@ local nightfly = { package_name = "bluz71/vim-nightfly-colors", themes = { "nigh
 function nightfly.config()
   vim.g.themes = Util.merge(vim.g.themes, nightfly.themes)
   vim.g.nightfly_style = "nightfly"
-  vim.cmd("colorscheme " .. vim.g.nightfly_style)
 end
 
 function nightfly.is_active_theme()
@@ -14,7 +13,7 @@ function nightfly.lazy()
   return {
     nightfly.package_name,
     name = "nightfly",
-    lazy = false,
+    event = "VeryLazy",
     config = nightfly.config,
     priority = 1000,
   }

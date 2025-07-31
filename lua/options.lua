@@ -2,9 +2,7 @@ local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 vim.g.mapleader = ' '
 vim.g.themes = {}
-vim.g.copilot_filetypes = {
-  ["markdown"] = true,
-}
+
 vim.opt.autoindent        = true;
 vim.opt.breakindentopt    = 'shift:2,min:20';
 vim.opt.clipboard         = 'unnamedplus';
