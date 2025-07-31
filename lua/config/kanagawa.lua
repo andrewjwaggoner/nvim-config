@@ -16,6 +16,7 @@ function kanagawa.lazy()
   return {
     kanagawa.package_name,
     name = "kanagawa",
+    --event = "VeryLazy",
     lazy = false,
     config = kanagawa.config,
     priority = 999,

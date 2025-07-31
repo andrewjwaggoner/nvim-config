@@ -8,7 +8,8 @@ function markdown_preview.lazy()
   return  {
     'iamcco/markdown-preview.nvim',
     markdown_preview.package_name,
-    lazy = false,
+    event = "VeryLazy",
+    ft = { "markdown" },
     cmd = 'MarkdownPreview',
     config = markdown_preview.config }
 end

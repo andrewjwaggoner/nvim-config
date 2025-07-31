@@ -8,7 +8,7 @@ end
 function code_companion.setup_keymaps()
   vim.keymap.set({ "n", "v" }, "<C-i>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
   vim.keymap.set({ "n", "v" }, "<Leader>ai", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-  vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+  vim.keymap.set("v", "cca", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
   vim.keymap.set("v", "pi", "<cmd>PasteImage<cr>", { noremap = true, silent = true })
   vim.keymap.set('n', '<leader>da', function()
     require('mini.diff').apply_hunks({ cursor = true })
@@ -20,7 +20,8 @@ end
 
 function code_companion.setup_commands()
   vim.cmd([[cab cc CodeCompanion]])
-  vim.cmd([[cab aie CodeCompanion #{buffer} /explain]])
+  vim.cmd([[cab ccb CodeCompanion #{buffer} #{chat}]])
+  vim.cmd([[cab aie CodeCompanion #{buffer} #{chat} /explain]])
   vim.cmd([[cab pi PasteImage]])
 end
 
@@ -181,17 +182,17 @@ end
 
 function code_companion.img_clip_dep()
   local img_clip_dep = {
-  "HakonHarnes/img-clip.nvim",
-  opts = {
-    filetypes = {
-      codecompanion = {
-        prompt_for_file_name = false,
-        template = "/tmp/[Image]($FILE_PATH)",
-        use_absolute_path = true,
+    "HakonHarnes/img-clip.nvim",
+    opts = {
+      filetypes = {
+        codecompanion = {
+          prompt_for_file_name = false,
+          template = "/tmp/[Image]($FILE_PATH)",
+          use_absolute_path = true,
+        },
       },
     },
-  },
-}
+  }
   return img_clip_dep
 end
 
@@ -225,55 +226,27 @@ function code_companion.mini_dep()
       })
     end,
   }
-
   return mini_dep
-end
-
-function code_companion.blink_dep()
-  local blink_dep = {
-    ' saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
-    version = '1.*',
-    opts = {
-      'enter',
-      keymap = { preset = 'default' },
-      appearance = {
-        nerd_font_variant = 'normal'
-      },
-      completion = { documentation = { auto_show = false },
-        ghost_text = {
-          enabled = false,
-          show_with_selection = true,
-          show_without_selection = false,
-          show_with_menu = true,
-          show_without_menu = true,
-        },
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-      },
-      fuzzy = { implementation = "prefer_rust_with_warning" }
-    },
-    opts_extend = { "sources.default" }
-  }
-  return blink_dep
 end
 
 function code_companion.lazy()
   return {
     "olimorris/codecompanion.nvim",
-    opts = {},
+    opts = {
+      extensions = {
+        spinner = {},
+      },
+    },
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
     config = code_companion.config,
+    event = "VeryLazy",
     dependencies = {
       {"nvim-lua/plenary.nvim"},
       {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+      "franco-ruggeri/codecompanion-spinner.nvim",
       code_companion.img_clip_dep(),
       code_companion.mini_dep(),
-      code_companion.blink_dep(),
     },
-    lazy=false,
   }
 end
 

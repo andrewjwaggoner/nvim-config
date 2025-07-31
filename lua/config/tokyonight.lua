@@ -12,7 +12,7 @@ function tokyonight.config()
 
   vim.g.themes = Util.merge(vim.g.themes, tokyonight.themes)
   vim.g.tokyonight_style = 'tokyonight-night'
-  vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
+  --vim.cmd('colorscheme ' .. vim.g.tokyonight_style)
 end
 
 function tokyonight.is_active_theme()
@@ -23,7 +23,7 @@ function tokyonight.lazy()
   return {
     tokyonight.package_name,
     config = tokyonight.config,
-    lazy = false,
+    event = "VeryLazy",
     disable = true,
     priority = 1000 }
 end
