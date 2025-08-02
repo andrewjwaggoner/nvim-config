@@ -5,6 +5,7 @@
   "codecompanion.nvim": { "branch": "main", "commit": "3527a9c85b58a8db2fee6d7dcde72077ba790a4a" },
   "colortils.nvim": { "branch": "main", "commit": "948d4eddbd20c3e9eac79368dc50c7929d4fb823" },
   "conjure": { "branch": "main", "commit": "ee0ba18a8ad6d55e2e5f84bf94e4906e348f23b7" },
+  "copilot.vim": { "branch": "release", "commit": "51f80c0ed4f70d1c7e8c0ff11a792a9d84502c03" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
   "img-clip.nvim": { "branch": "main", "commit": "d8b6b030672f9f551a0e3526347699985a779d93" },

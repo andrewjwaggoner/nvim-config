@@ -69,7 +69,7 @@ vim.keymap.set('n', '<Leader>ft', '<Cmd>Telescope treesitter<CR>', { silent = tr
 vim.keymap.set('n', '<Leader>gc', '<Cmd>Telescope git_commits<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>gd', '<Cmd>Telescope git_status<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>gf', '<Cmd>Telescope git_bcommits<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>gr', '<Cmd>Telescope git_branches<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>gb', '<Cmd>Telescope git_branches<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>gt', '<Cmd>Telescope git_stash<CR>', { silent = true })
 
 return telescope
