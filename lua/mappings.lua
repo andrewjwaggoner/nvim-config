@@ -1,5 +1,4 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
+vim.g.mapleader = ' ' vim.g.maplocalleader = ','
 -- Keymappings that don't belong to package.
 vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })

@@ -87,14 +87,33 @@ function code_companion.general_options()
     log_level = "ERROR",
     language = "English",
     send_code = true,
-    job_start_delay = 1500,
-    submit_delay = 2000,
+    job_start_delay = 500,
+    submit_delay = 1000,
     system_prompt = code_companion.system_prompt,
   }
 end
 
 function code_companion.prompt_library()
   local prompt_library = {
+    ["Automate"] = {
+      strategy = "chat",
+      description = "tries to automate some workflow in Neovim",
+      opts = {
+        is_slash_cmd = true,
+        auto_submit = false,
+        short_name = "auto",
+      },
+      prompts = {
+        {
+          role = "system",
+          content = "You are helping the user to make code changes in Neovim. You will be updating the user's buffer with the @{insert_edit_into_file} tool. You don't care about anything else and won't mention it.",
+        },
+        {
+          role = "user",
+          content = "You will be updating my buffer #{buffer} with the @{insert_edit_into_file} tool."
+        }
+      },
+    },
     ["Gentoo"] = {
       strategy = "chat",
       description = "Asks a question specifically about gentoo linux",
@@ -106,14 +125,58 @@ function code_companion.prompt_library()
       prompts = {
         {
           role = "system",
-          content = "You are an experienced linux developer who specifically uses gentoo. You don't care about anything else and won't mention it. 3. Do not suggest next steps if I'm giving simple orders. If I'm pondering options suggest next steps to me.",
+          content = "You are an experienced linux developer who specifically uses Gentoo. You don't care about anything else and won't mention it. 3. Do not suggest next steps if I'm giving simple orders. If I'm pondering options suggest next steps to me.",
         },
         {
           role = "user",
           content = "explain:"
         }
       },
+    },
+    ["Genealogy"] = {
+      strategy = "chat",
+      description = "Asks a question specifically about genealogy",
+      opts = {
+        is_slash_cmd = true,
+        auto_submit = false,
+        short_name = "gene",
+      },
+      prompts = {
+        {
+          role = "system",
+          content = [[
+You are structuring genealogical data into JSON. You don't care about anything else and won't mention it. The file will contain information about individuals, their relationships, and other relevant details. The first line
+usually contains the name, second is gender, third is birth - death dates. There's a FamilySearch ID in the format XXXX-XXX. Some life history maybe present, and at the end there will be Spouses and Children. 
+dataBlobs you can just use a placeholder name for, if they exist. You will be formatting the data like so:
+  {
+    "YYYY-Firstname Lastname": {
+      "name": "Firstname Lastname",
+      "alternateNames": [],
+      "gender": "Gender",
+      "spouses": ["YYYY-Spouse Name"],
+      "children": ["YYYY-Child Name"],
+      "parents": [],
+      "dateOfBirth": "YYYY-MM-DD",
+      "dateOfDeath": "unknown",
+      "locationOfBirth": "Place of Birth",
+      "locationOfDeath": "Place of Death",
+      "lifeHistory": "Brief life history goes here.",
+      "nameMeaning": "Meaning of the name goes here, if it exists.",
+      "familySearchId": "XXXX-XXX",
+      "dataBlobs": ["guid-1", "guid-2"]
     }
+  }
+]]
+      },
+        {
+          role = "user",
+          content = "You will be updating my buffer #{buffer} with the @{insert_edit_into_file} tool and adding the JSON data to it. The file is a list of these objects, so update or add them as necessary. If you have new information about an individual, you will add it to the existing object. If the individual does not exist, you will create a new object for them. If you have no information about an individual, you will not create an object for them.",
+          opts = {
+            auto_submit = true,
+          }
+        }
+      },
+    },
   }
   return prompt_library
 end
