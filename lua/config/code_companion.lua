@@ -1,7 +1,7 @@
 local code_companion = {}
 
 function code_companion.setup_env()
-  -- vim.env["CODECOMPANION_TOKEN_PATH"] = vim.fn.expand("~/.config")
+  vim.env["CODECOMPANION_TOKEN_PATH"] = vim.fn.expand("~/.config")
   vim.env.LAZY_STDPATH = ".repro"
 end
 
@@ -27,6 +27,17 @@ end
 
 function code_companion.display_options()
   return {
+    action_palette = {
+      width = 95,
+      height = 10,
+      prompt = "Prompt ", -- Prompt used for interactive LLM calls
+      provider = "telescope",
+      opts = {
+        show_default_actions = false,
+        show_default_prompt_library = false,
+        title = "CodeCompanion actions",
+      },
+    },
     chat = {
       icons = {
         buffer_pin = " ",
@@ -37,7 +48,8 @@ function code_companion.display_options()
         height = vim.o.lines - 2,
       },
       window = {
-        layout = "float",
+        layout = "vertical",
+        position = "right",
         border = "single",
         height = 0.8,
         width = 0.45,
@@ -56,12 +68,20 @@ function code_companion.display_options()
           wrap = true,
         },
       },
-      start_in_insert_mode = false,
+      start_in_insert_mode = true,
       token_count = function(tokens, adapter)
-        return " (" .. tokens .. " tokens)"
+        return " (" .. adapter .. ": " .. tokens .. " tokens)"
       end,
     },
   }
+end
+
+function code_companion.spinner_options()
+    return {
+      extensions = {
+        spinner = {},
+      },
+    }
 end
 
 function code_companion.strategies_options()
@@ -87,97 +107,39 @@ function code_companion.general_options()
     log_level = "ERROR",
     language = "English",
     send_code = true,
-    job_start_delay = 500,
-    submit_delay = 1000,
+    job_start_delay = 250,
+    submit_delay = 500,
     system_prompt = code_companion.system_prompt,
   }
 end
 
 function code_companion.prompt_library()
+  local join_prompts = function(tbl)
+    local prompts = {}
+    for _, entry in ipairs(tbl) do
+      if type(entry) == "table" then
+        for _, p in ipairs(entry) do
+          table.insert(prompts, p)
+        end
+      end
+    end
+    return prompts
+  end
+
   local prompt_library = {
-    ["Automate"] = {
-      strategy = "chat",
-      description = "tries to automate some workflow in Neovim",
-      opts = {
-        is_slash_cmd = true,
-        auto_submit = false,
-        short_name = "auto",
-      },
-      prompts = {
-        {
-          role = "system",
-          content = "You are helping the user to make code changes in Neovim. You will be updating the user's buffer with the @{insert_edit_into_file} tool. You don't care about anything else and won't mention it.",
-        },
-        {
-          role = "user",
-          content = "You will be updating my buffer #{buffer} with the @{insert_edit_into_file} tool."
-        }
-      },
-    },
-    ["Gentoo"] = {
-      strategy = "chat",
-      description = "Asks a question specifically about gentoo linux",
-      opts = {
-        is_slash_cmd = true,
-        auto_submit = false,
-        short_name = "gentoo",
-      },
-      prompts = {
-        {
-          role = "system",
-          content = "You are an experienced linux developer who specifically uses Gentoo. You don't care about anything else and won't mention it. 3. Do not suggest next steps if I'm giving simple orders. If I'm pondering options suggest next steps to me.",
-        },
-        {
-          role = "user",
-          content = "explain:"
-        }
-      },
-    },
-    ["Genealogy"] = {
-      strategy = "chat",
-      description = "Asks a question specifically about genealogy",
-      opts = {
-        is_slash_cmd = true,
-        auto_submit = false,
-        short_name = "gene",
-      },
-      prompts = {
-        {
-          role = "system",
-          content = [[
-You are structuring genealogical data into JSON. You don't care about anything else and won't mention it. The file will contain information about individuals, their relationships, and other relevant details. The first line
-usually contains the name, second is gender, third is birth - death dates. There's a FamilySearch ID in the format XXXX-XXX. Some life history maybe present, and at the end there will be Spouses and Children. 
-dataBlobs you can just use a placeholder name for, if they exist. You will be formatting the data like so:
-  {
-    "YYYY-Firstname Lastname": {
-      "name": "Firstname Lastname",
-      "alternateNames": [],
-      "gender": "Gender",
-      "spouses": ["YYYY-Spouse Name"],
-      "children": ["YYYY-Child Name"],
-      "parents": [],
-      "dateOfBirth": "YYYY-MM-DD",
-      "dateOfDeath": "unknown",
-      "locationOfBirth": "Place of Birth",
-      "locationOfDeath": "Place of Death",
-      "lifeHistory": "Brief life history goes here.",
-      "nameMeaning": "Meaning of the name goes here, if it exists.",
-      "familySearchId": "XXXX-XXX",
-      "dataBlobs": ["guid-1", "guid-2"]
-    }
+    ["Automate"] = require("prompts.automate"),
+    ["Gentoo"] = require("prompts.gentoo"),
+    ["Genealogy"] = require("prompts.genealogy"),
+    ["Code Flow"] = require("workflows.codeflow"),
   }
-]]
-      },
-        {
-          role = "user",
-          content = "You will be updating my buffer #{buffer} with the @{insert_edit_into_file} tool and adding the JSON data to it. The file is a list of these objects, so update or add them as necessary. If you have new information about an individual, you will add it to the existing object. If the individual does not exist, you will create a new object for them. If you have no information about an individual, you will not create an object for them.",
-          opts = {
-            auto_submit = true,
-          }
-        }
-      },
-    },
-  }
+
+  -- If a prompt file returns a table with multiple prompt sets, join them
+  for _, v in pairs(prompt_library) do
+    if v.prompts and type(v.prompts[1]) == "table" and type(v.prompts[1].role) ~= "string" then
+      v.prompts = join_prompts(v.prompts)
+    end
+  end
+
   return prompt_library
 end
 
@@ -187,7 +149,8 @@ function code_companion.build_options()
     { prompt_library = code_companion.prompt_library()},
     code_companion.general_options(),
     { display = code_companion.display_options() },
-    { strategies = code_companion.strategies_options() }
+    { strategies = code_companion.strategies_options(),
+      opts = code_companion.spinner_options() }
   )
 end
 
@@ -200,47 +163,7 @@ end
 
 function code_companion.system_prompt(opts)
   local language = opts.language or "English"
-  return string.format(
-[[
-You are an AI programming assistant named "CodeCompanion". You are currently plugged into the Neovim text editor on a user's machine.
-
-Your core tasks include:
-- Answering general programming questions.
-- Explaining how the code in a Neovim buffer works.
-- Reviewing the selected code from a Neovim buffer.
-- Generating unit tests for the selected code.
-- Proposing fixes for problems in the selected code.
-- Looking at one file to and writing similar text to buffer.
-- Scaffolding code for a new workspace.
-- Finding relevant code to the user's query.
-- Answering questions about Neovim.
-- Answering questions about Linux.
-- Answering guestions about Gentoo.
-- Running tools.
-
-You must:
-- Follow the user's requirements carefully and to the letter.
-- Use the context and attachments the user provides.
-- Keep your answers short and impersonal, especially if the user's context is outside your core tasks.
-- Minimize additional prose unless clarification is needed.
-- Use Markdown formatting in your answers.
-- Include the programming language name at the start of each Markdown code block.
-- Do not include line numbers in code blocks.
-- Avoid wrapping the whole response in triple backticks.
-- Only return code that's directly relevant to the task at hand. You may omit code that isn’t necessary for the solution.
-- Avoid using H1, H2 or H3 headers in your responses as these are reserved for the user.
-- Use actual line breaks in your responses; only use "\n" when you want a literal backslash followed by 'n'.
-- All non-code text responses must be written in the %s language indicated.
-- Multiple, different tools can be called as part of the same response.
-
-When given a task:
-1. Think step-by-step and, unless the user requests otherwise or the task is very simple, describe your plan in detailed pseudocode.
-2. Output the final code in a single code block, ensuring that only relevant code is included.
-3. Do not suggest next steps if I'm giving simple orders. If I'm pondering options suggest next steps to me.
-4. Provide exactly one complete reply per conversation turn.
-5. If necessary, execute multiple tools in a single turn.]],
-    language
-  )
+  return string.format(require("prompts.system"), language)
 end
 
 function code_companion.img_clip_dep()
@@ -295,16 +218,11 @@ end
 function code_companion.lazy()
   return {
     "olimorris/codecompanion.nvim",
-    opts = {
-      extensions = {
-        spinner = {},
-      },
-    },
     cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
     config = code_companion.config,
     event = "VeryLazy",
     dependencies = {
-      {"nvim-lua/plenary.nvim"},
+      {"nvim-lua/plenary.nvim", version = false},
       {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
       "franco-ruggeri/codecompanion-spinner.nvim",
       code_companion.img_clip_dep(),
