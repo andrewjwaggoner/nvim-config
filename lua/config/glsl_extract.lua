@@ -80,7 +80,7 @@ function glsl_extract.extract()
   vim.cmd("vsplit | buffer " .. glsl_buf)
 
   -- Optional: attach GLSL LSP
-  for _, client in ipairs(vim.lsp.get_clients()) do
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     if client.name == "glsl_analyzer" then
       vim.lsp.buf_attach_client(glsl_buf, client.id)
     end

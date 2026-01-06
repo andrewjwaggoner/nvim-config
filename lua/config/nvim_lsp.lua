@@ -108,7 +108,8 @@ local on_attach_omnisharp = function(client, bufnr)
 end
 
 nvim_lsp.config = function()
-  require 'lspconfig'.lua_ls.setup {
+
+  vim.lsp.config.lua_ls = {
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT' },
@@ -119,21 +120,21 @@ nvim_lsp.config = function()
     }
   }
   local lsp_path = os.getenv('MASON_HOME') or os.getenv('HOME') .. '/.local/share/nvim/mason/bin/'
-  require 'lspconfig'.bashls.setup { on_attach = on_attach, cmd = { lsp_path .. 'bash-language-server' } }
-  require 'lspconfig'.clangd.setup { on_attach = on_attach, cmd = { lsp_path .. 'clangd' } }
-  require 'lspconfig'.cssls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-css-language-server', '--stdio' } }
-  require 'lspconfig'.dockerls.setup { on_attach = on_attach, cmd = { lsp_path .. 'docker-langserver', '--stdio' } }
-  require 'lspconfig'.glsl_analyzer.setup { on_attach = on_attach, single_file_support = true }
-  require 'lspconfig'.jsonls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vscode-json-language-server', '--stdio' } }
-  require 'lspconfig'.marksman.setup { on_attach = on_attach, cmd = { lsp_path .. 'marksman' } }
-  require 'lspconfig'.omnisharp.setup { on_attach = on_attach_omnisharp, cmd = { lsp_path .. 'omnisharp', '--languageserver' } }
-  require 'lspconfig'.pyright.setup { on_attach = on_attach }
-  require 'lspconfig'.clojure_lsp.setup { }
-  require 'lspconfig'.rust_analyzer.setup { on_attach = on_attach, cmd = { lsp_path .. 'rust-analyzer' } }
-  require 'lspconfig'.sqlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'sql-language-server', '--stdio' } }
-  require 'lspconfig'.ts_ls.setup { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
-  require 'lspconfig'.vimls.setup { on_attach = on_attach, cmd = { lsp_path .. 'vim-language-server', '--stdio' } }
-  require 'lspconfig'.yamlls.setup { on_attach = on_attach, cmd = { lsp_path .. 'yaml-language-server', '--stdio' } }
+  vim.lsp.config.bashls = { on_attach = on_attach, cmd = { lsp_path .. 'bash-language-server' } }
+  vim.lsp.config.clangd = { on_attach = on_attach, cmd = { lsp_path .. 'clangd' } }
+  vim.lsp.config.cssls = { on_attach = on_attach, cmd = { lsp_path .. 'vscode-css-language-server', '--stdio' } }
+  vim.lsp.config.dockerls = { on_attach = on_attach, cmd = { lsp_path .. 'docker-langserver', '--stdio' } }
+  vim.lsp.config.glsl_analyzer = { on_attach = on_attach, single_file_support = true }
+  vim.lsp.config.jsonls = { on_attach = on_attach, cmd = { lsp_path .. 'vscode-json-language-server', '--stdio' } }
+  vim.lsp.config.marksman = { on_attach = on_attach, cmd = { lsp_path .. 'marksman' } }
+  vim.lsp.config.omnisharp = { on_attach = on_attach_omnisharp, cmd = { lsp_path .. 'omnisharp', '--languageserver' } }
+  vim.lsp.config.pyright = { on_attach = on_attach }
+  vim.lsp.config.clojure_lsp = { }
+  vim.lsp.config.rust_analyzer = { on_attach = on_attach, cmd = { lsp_path .. 'rust-analyzer' } }
+  vim.lsp.config.sqlls = { on_attach = on_attach, cmd = { lsp_path .. 'sql-language-server', '--stdio' } }
+  vim.lsp.config.ts_ls = { on_attach = on_attach, cmd = { lsp_path .. 'typescript-language-server', '--stdio' } }
+  vim.lsp.config.vimls = { on_attach = on_attach, cmd = { lsp_path .. 'vim-language-server', '--stdio' } }
+  vim.lsp.config.yamlls = { on_attach = on_attach, cmd = { lsp_path .. 'yaml-language-server', '--stdio' } }
 
 end
 
