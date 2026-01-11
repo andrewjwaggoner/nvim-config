@@ -15,7 +15,7 @@ end
 snippets.lazy = function()
   return {
     'L3MON4D3/LuaSnip',
-    event = "VeryLazy",
+    event = "InsertEnter",
     config = snippets.config }
 end
 

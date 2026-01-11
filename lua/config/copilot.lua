@@ -8,7 +8,7 @@ function copilot.config()
     ["lua"] = true,
     ["python"] = true,
   }
-  vim.api.nvim_set_keymap("i", "<C-k>", "copilot#Accept('<CR>')", { expr = true, silent = true })
+  vim.api.nvim_set_keymap("i", "<C-c>", "copilot#Accept('<CR>')", { expr = true, silent = true })
 end
 
 function copilot.set_workspace_to_cwd()
