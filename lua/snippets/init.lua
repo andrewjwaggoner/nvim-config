@@ -9,6 +9,7 @@ snippets.c = require('snippets.c')
 snippets.md = require('snippets.md')
 snippets.py = require('snippets.py')
 snippets.py_matplotlib = require('snippets.py_matplotlib')
+snippets.sql = require('snippets.sql')
 snippets.tex = require('snippets.tex')
 snippets.all = require('snippets.all')
 
@@ -94,11 +95,12 @@ end
 
 local m = module()
 ls.snippets = {}
-snippets.all.init(ls, m)
 snippets.c.init(ls, m)
 snippets.md.init(ls, m)
 snippets.py.init(ls, m)
 snippets.py_matplotlib.init(ls, m)
+snippets.sql.init(ls, m)
 snippets.tex.init(ls, m)
+snippets.all.init(ls, m)
 
 return snippets

@@ -4,6 +4,7 @@ vim.keymap.set('n', '<Leader>dt', '<Cmd>DBUIToggle<CR>', { silent = true })
 
 function dadbod.config()
   vim.g.db_ui_use_nerd_fonts = 1
+  vim.g.db_ui_winwidth = 60
 end
 
 function dadbod.lazy()
