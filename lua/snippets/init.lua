@@ -89,6 +89,10 @@ local function module()
     return lsm.sn(nil, lsm.i(1, tostring(os.time())))
   end
 
+  lsm.otp_input = function(_,_,_)
+    return lsm.sn(nil, lsm.i(1, 'otpauth://totp/<username>?secret=<secret>'))
+end
+
   -- use this object when wiring up snippets
   return lsm
 end
