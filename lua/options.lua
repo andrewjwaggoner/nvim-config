@@ -69,3 +69,17 @@ vim.g.clipboard = {
     ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
   },
 }
+
+vim.filetype.add({
+  extension = {
+    bb = "clj",
+  },
+})
+
+vim.filetype.add({
+  pattern = {
+    -- Matches any file ending in .bb and forces Clojure
+    -- priority = 10 ensuring it runs ahead of built-in BitBake detection
+    [".*%.bb"] = { "clojure", { priority = 10 } },
+  },
+})
